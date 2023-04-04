@@ -40,7 +40,7 @@ public function index() {
                 redirect('home');
             }
         } else {
-            $data['sitename'] = 'TaskBai 1.0';
+            $data['sitename'] = 'PluginTracker';
             $data["errors"] = array('error_message' => 'Invalid Username or Password');
             $this->load->view('includes/head', $data );
             $this->load->view('login');
@@ -55,7 +55,7 @@ public function logout($page = 'logout') {
     block_ip();
     $data['sitename'] = 'PluginTracker';
     // Removing session data
-    $sess_array = array('email_address' => '');
+    $sess_array = array('username' => '');
     $this->session->unset_userdata('logged_in', $sess_array);
         // $data['message_display'] = 'Successfully Logout';
 
