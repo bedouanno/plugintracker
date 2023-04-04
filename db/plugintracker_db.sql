@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 04, 2023 at 08:46 AM
+-- Generation Time: Apr 04, 2023 at 09:45 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
 
@@ -71,6 +71,14 @@ CREATE TABLE `tbl_users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
+-- Dumping data for table `tbl_users`
+--
+
+INSERT INTO `tbl_users` (`id`, `first_name`, `last_name`, `username`, `password`, `role`) VALUES
+(1, 'Obed', 'Ouano', 'bedouano', '202cb962ac59075b964b07152d234b70', 0),
+(2, 'Obed', 'Ouano', 'bedouano', '202cb962ac59075b964b07152d234b70', 1);
+
+--
 -- Indexes for dumped tables
 --
 
@@ -112,7 +120,7 @@ ALTER TABLE `tbl_plugin`
 -- AUTO_INCREMENT for table `tbl_users`
 --
 ALTER TABLE `tbl_users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
