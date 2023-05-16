@@ -1,28 +1,49 @@
+<!--
+=========================================================
+* Material Dashboard 2 - v3.1.0
+=========================================================
+* Product Page: https://www.creative-tim.com/product/material-dashboard
+* Copyright 2023 Creative Tim (https://www.creative-tim.com)
+* Licensed under MIT (https://www.creative-tim.com/license)
+* Coded by Creative Tim
+=========================================================
+* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+-->
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="apple-touch-icon" sizes="76x76" href="<?php echo base_url(); ?>assetsv2/img/apple-icon.png">
+  <link rel="icon" type="image/png" href="<?php echo base_url(); ?>assetsv2/img/favicon.png">
+  <title>Plugin Tracker</title>
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+  <!-- Fonts and icons -->
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
 
-    <title>PluginTracker v1</title>
+  <!-- Nucleo Icons -->
+  <link href="<?php echo base_url(); ?>assetsv2/css/nucleo-icons.css" rel="stylesheet" />
+  <link href="<?php echo base_url(); ?>assetsv2/css/nucleo-svg.css" rel="stylesheet" />
 
-    <!-- Custom fonts for this template-->
-    <link href="<?php echo base_url(); ?>/assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
+  <!-- Font Awesome Icons -->
+  <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
 
-    <!-- Custom styles for this template-->
-    <link href="<?php echo base_url(); ?>/assets/css/sb-admin-2.min.css" rel="stylesheet">
+  <!-- Material Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+  <!-- CSS Files -->
 
-</head>
 
-<body id="page-top">
+  <link id="pagestyle" href="<?php echo base_url(); ?>assetsv2/css/material-dashboard.css?v=3.1.0" rel="stylesheet" />
+  <link rel="stylesheet" href="<?php echo base_url(); ?>assetsv2/sweet-modal/jquery.sweet-modal.min.css"/>
 
-    <!-- Page Wrapper -->
-    <div id="wrapper">
+    <style>
+    body{font-size: 14px !important}
+    #cke_security_notes, #cke_conclusion{ width: 100% !important; }
+    </style>
+
+
+
+  </head>
+  <body class="g-sidenav-show  bg-gray-100">
+

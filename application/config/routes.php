@@ -50,12 +50,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |		my-controller/my-method	-> my_controller/my_method
 */
 
-$route['research/delete/(:any)'] = 'main/delete_plugin/$1';
-$route['research'] = 'main/research';
+$route['plugins/list'] = 'plugins/index';
+$route['plugins/create'] = 'plugins/create';
+$route['plugins/view/(:any)'] = 'plugins/view/$1';
+$route['plugins/update/(:any)'] = 'plugins/update/$1';
+
 $route['logout'] = 'login/logout';
 $route['login'] = 'login';
 $route['home'] = 'main/index';
-$route['(:any)'] = 'main/view/$1';
 $route['default_controller'] = 'main/index';
 $route['404_override'] = 'main/error_page';
 $route['translate_uri_dashes'] = FALSE;

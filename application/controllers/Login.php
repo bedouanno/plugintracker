@@ -14,12 +14,12 @@ public function index() {
 
     if ($this->form_validation->run() == FALSE) {
 
-        if(isset($this->session->userdata['logged_in'])){
+        if(isset($this->session->userdata['signed_in'])){
                 redirect('home');
             }else{
-                $this->load->view('includes/head');
+
                 $this->load->view('login');
-                $this->load->view('includes/footer');
+
             }
         } else {
         $data = array(
@@ -36,15 +36,14 @@ public function index() {
                     );
 
                 // Add user data in session
-                $this->session->set_userdata('logged_in', $session_data);
+                $this->session->set_userdata('signed_in', $session_data);
                 redirect('home');
             }
         } else {
             $data['sitename'] = 'PluginTracker';
             $data["errors"] = array('error_message' => 'Invalid Username or Password');
-            $this->load->view('includes/head', $data );
-            $this->load->view('login');
-            $this->load->view('includes/footer');
+
+            $this->load->view('login',$data );
         }
     }
 }
@@ -56,7 +55,7 @@ public function logout($page = 'logout') {
     $data['sitename'] = 'PluginTracker';
     // Removing session data
     $sess_array = array('username' => '');
-    $this->session->unset_userdata('logged_in', $sess_array);
+    $this->session->unset_userdata('signed_in', $sess_array);
         // $data['message_display'] = 'Successfully Logout';
 
         redirect('login');
