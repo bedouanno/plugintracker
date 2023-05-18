@@ -40,6 +40,13 @@
     <style>
     body{font-size: 14px !important}
     #cke_security_notes, #cke_conclusion{ width: 100% !important; }
+
+
+    .modal-custom{position: fixed; transform: translate(-50%,-50%); left:50%; top:50%; z-index: 9999; width: 100%; height: 100%; background: rgba(0,0,0,.9)}
+    .modal-custom .card-action{text-align: right}
+    .card-custom{position: absolute; transform: translate(-50%,-50%); left:50%; top:50%;}
+    #btn_img:hover img{filter: grayscale(100%);}
+    .txt-right{text-align: right}
     </style>
 
 

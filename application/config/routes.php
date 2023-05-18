@@ -50,10 +50,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |		my-controller/my-method	-> my_controller/my_method
 */
 
+$route['users/list'] = 'users/index';
+$route['users/create'] = 'users/create';
+$route['user/view/(:any)'] = 'users/view/$1';
+$route['user/update/(:any)'] = 'users/update/$1';
+
 $route['plugins/list'] = 'plugins/index';
 $route['plugins/create'] = 'plugins/create';
 $route['plugins/view/(:any)'] = 'plugins/view/$1';
 $route['plugins/update/(:any)'] = 'plugins/update/$1';
+
+
+$route['plugins/not-safe'] = 'plugins/not_safe_plugins';
+$route['plugins/approved'] = 'plugins/approved_plugins';
+$route['plugins/for-review'] = 'plugins/review';
+$route['plugins/for-review-view/(:any)'] = 'plugins/review_view/$1';
 
 $route['logout'] = 'login/logout';
 $route['login'] = 'login';

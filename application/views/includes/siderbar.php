@@ -37,19 +37,44 @@
   </a>
 </li>
 
-  
-<!-- <li class="nav-item">
-  <a class="nav-link text-white " href="./billing.html">
+ <li class="nav-item">
+  <a class="nav-link text-white " href="<?php echo base_url(); ?>plugins/for-review">
     
       <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
         <i class="material-icons opacity-10">receipt_long</i>
       </div>
     
-    <span class="nav-link-text ms-1">Billing</span>
+
+      <span class="nav-link-text ms-1">For Review <mark class="text-xxs bg-transparent text-white">(Leader Admin)</mark>
+     <?php if($this->plugins_model->get_review_count(0) != 0): ?>
+      <small class="badge text-xxs bg-danger p-2 rounded ml-2"><?php echo $this->plugins_model->get_review_count(0); ?></small> 
+      <?php endif; ?>
+    </span>
   </a>
 </li>
 
   
+ <li class="nav-item">
+  <a class="nav-link text-white " href="<?php echo base_url(); ?>plugins/approved">
+    
+      <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+        <i class="material-icons opacity-10">receipt_long</i>
+      </div>
+    
+    <span class="nav-link-text ms-1">Approved Plugins</span>
+  </a>
+</li>
+ <li class="nav-item">
+  <a class="nav-link text-white " href="<?php echo base_url(); ?>plugins/not-safe">
+    
+      <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+        <i class="material-icons opacity-10">close</i>
+      </div>
+    
+    <span class="nav-link-text ms-1">Not Safe Plugins</span>
+  </a>
+</li>
+  <!--
 <li class="nav-item">
   <a class="nav-link text-white " href="./virtual-reality.html">
     
@@ -89,6 +114,19 @@
     <span class="nav-link-text ms-1">Profile</span>
   </a>
 </li> -->
+
+
+<li class="nav-item">
+  <a class="nav-link text-white" href="<?php echo base_url(); ?>users/list">
+    
+      <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+        <i class="material-icons opacity-10">assignment</i>
+      </div>
+    
+    <span class="nav-link-text ms-1">Users</span>
+
+  </a>
+</li>
  
 <li class="nav-item">
   <a class="nav-link text-white" href="<?php echo base_url(); ?>logout">

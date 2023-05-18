@@ -6,23 +6,23 @@
         <div class="row gx-4 mb-2">
           <div class="col-auto">
             <div class="avatar avatar-xl position-relative">
-
+ <a href="javascript:;" id="btn_img" onClick="popup_sn('#imgl_form')" class="d-block" style="width:100%">
               <?php  if($plugin['plugin_image_link'] != NULL){ ?>
               <img src="<?php echo $plugin['plugin_image_link']; ?>" alt="profile_image" class="w-100 border-radius-lg shadow-sm">
               <?php }else{ ?>
               <img src="https://www.nicepng.com/png/detail/39-395944_logo-wordpress-plugin-logo.png" alt="profile_image" class="w-100 border-radius-lg shadow-sm">
               <?php } ?>
-
+</a>
             </div>
           </div>
-          <div class="col-auto my-auto">
+          <div class="col my-auto">
             <div class="h-100">
               <h5 class="mb-1">
                 
                     <div class="col-md-4 text-left">
                     <?php echo $plugin['plugin_name']; ?>
-                      <a href="javascript:;">
-                        <i class="fas fa-edit text-secondary text-xs" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Plugin Name"></i>
+                      <a href="javascript:;" onClick="popup_sn('#pl_form')">
+                        <i class="fas fa-edit text-secondary text-xs" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Plugin Name and Link"></i>
                       </a>
                     </div>
               </h5>
@@ -89,15 +89,19 @@
               <div class="card card-plain h-100">
                 <div class="card-header pb-0 p-3">
                   <h6 class="mb-0">Security Notes 
-                        <a href="javascript:;">
-                        <i class="fas fa-edit text-secondary text-xs" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Plugin Name"></i>
+                        <a href="javascript:;" onClick="popup_sn('#sn_form')">
+                        <i class="fas fa-edit text-secondary text-xs" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Security Notes"></i>
                       </a>
                     </h6>
                 </div>
                 <div class="card-body p-3">
                   <p class="text-sm">
                     <?php echo $plugin['plugin_security_notes']; ?>
-                  </p>
+
+
+
+                    
+                  </p>          
                 </div>
               </div>
             </div>
@@ -105,8 +109,8 @@
               <div class="card card-plain h-100">
                 <div class="card-header pb-0 p-3">
                   <h6 class="mb-0">Conclusion 
-                      <a href="javascript:;">
-                        <i class="fas fa-edit text-secondary text-xs" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Plugin Name"></i>
+                      <a href="javascript:;" onClick="popup_sn('#c_form')">
+                        <i class="fas fa-edit text-secondary text-xs" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Conclusion"></i>
                       </a>
                   </h6>
                 </div>
@@ -277,3 +281,106 @@
         </div>
       </div>
     </div>
+
+
+      <div class="modal-custom d-none" id="sn_form">
+      <div class="row">
+        <div class="col">
+          <div class="card card-custom blue-grey darken-1 p-4 col-5">
+          <?php echo form_open('plugins/update/'.$plugin['id']); ?>
+            <div class="card-content white-text">
+              <span class="card-title h6 pb-3">Security Notes</span>
+              <hr class="my-2">
+              <textarea name="security_notes" id="security_notes"><?php echo $plugin['plugin_security_notes']; ?></textarea>
+            </div>
+            <div class="card-action mt-2">
+              <input type="submit" name="update_sn_form" value="Update" class="btn btn-sm btn-success" data-bs-toggle="tooltip" data-bs-placement="top" title="Update">
+              <a href="#" class="btn btn-sm btn-danger close-btn" data-bs-toggle="tooltip" data-bs-placement="top" title="Close"><i class="large material-icons">close</i></a>
+            <?php echo form_close(); ?>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+
+
+      <div class="modal-custom d-none" id="c_form">
+      <div class="row">
+        <div class="col">
+          <div class="card card-custom blue-grey darken-1 p-4 col-5">
+          <?php echo form_open('plugins/update/'.$plugin['id']); ?>
+            <div class="card-content white-text">
+              <span class="card-title h6 pb-3">Conclusion</span>
+              <hr class="my-2">
+              <textarea name="conclusion" id="conclusion"><?php echo $plugin['plugin_conclusion']; ?></textarea>
+            </div>
+            <div class="card-action mt-2">
+              <input type="submit" name="update_c_form" value="Update" class="btn btn-sm btn-success" data-bs-toggle="tooltip" data-bs-placement="top" title="Update">
+              <a href="#" class="btn btn-sm btn-danger close-btn" data-bs-toggle="tooltip" data-bs-placement="top" title="Close"><i class="large material-icons">close</i></a>
+            <?php echo form_close(); ?>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+
+
+      <div class="modal-custom d-none" id="pl_form">
+      <div class="row">
+        <div class="col">
+          <div class="card card-custom blue-grey darken-1 p-4 col-5">
+          <?php echo form_open('plugins/update/'.$plugin['id']); ?>
+            <div class="card-content white-text">
+            
+              <span class="card-title h6 pb-3">Basic Information</span>
+              <hr class="my-2">
+                  <div class="col-sm-12">
+                    <div class="input-group input-group-static mb-3">
+                      <label>Plugin Name</label>
+                      <input type="text" class="form-control" name="plugin_name" value="<?php echo $plugin['plugin_name']; ?>">
+                    </div>
+                    <div class="input-group input-group-static mb-3">
+                      <label>Plugin Link</label>
+                      <input type="text" class="form-control" name="plugin_link" value="<?php echo $plugin['plugin_link']; ?>">
+                    </div>
+                  </div>
+            </div>
+            <div class="card-action mt-2">
+            <input type="submit" name="update_pl_form" value="Update" class="btn btn-sm btn-success" data-bs-toggle="tooltip" data-bs-placement="top" title="Update">
+              <a href="#" class="btn btn-sm btn-danger close-btn" data-bs-toggle="tooltip" data-bs-placement="top" title="Close"><i class="large material-icons">close</i></a>
+              <?php echo form_close(); ?>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+
+    
+      <div class="modal-custom d-none" id="imgl_form">
+      <div class="row">
+        <div class="col">
+          <div class="card card-custom blue-grey darken-1 p-4 col-5">
+            <?php echo form_open('plugins/update/'.$plugin['id']); ?>
+            <div class="card-content white-text">
+              <span class="card-title h6 pb-3">Basic Information</span>
+              <hr class="my-2">
+                  <div class="col-sm-12">
+                      <div class="input-group input-group-static mb-3">
+                        <label>Image plugin Link (Optional)</label>
+                        <input type="text" class="form-control" name="plugin_image_link" value="<?php echo $plugin['plugin_image_link'] ?>">
+                      </div>
+                  </div>
+            </div>
+            <div class="card-action mt-2">
+            <input type="submit" name="update_imgl_form" value="Update" class="btn btn-sm btn-success" data-bs-toggle="tooltip" data-bs-placement="top" title="Update">
+              <a href="#" class="btn btn-sm btn-danger close-btn" data-bs-toggle="tooltip" data-bs-placement="top" title="Close"><i class="large material-icons">close</i></a>
+              <?php echo form_close(); ?>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>

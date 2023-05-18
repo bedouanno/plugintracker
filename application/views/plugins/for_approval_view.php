@@ -1,47 +1,49 @@
-<? $object; ?>
     <div class="container-fluid px-2 px-md-4">
       <div class="page-header min-height-300 border-radius-xl mt-4" style="background-image: url('https://images.unsplash.com/photo-1531512073830-ba890ca4eba2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');">
-        <span class="mask  bg-gradient-primary  opacity-6"></span>
+        <span class="mask  bg-gradient-warning  opacity-6"></span>
       </div>
       <div class="card card-body mx-3 mx-md-4 mt-n6">
         <div class="row gx-4 mb-2">
           <div class="col-auto">
             <div class="avatar avatar-xl position-relative">
-
+ <a href="javascript:;" id="btn_img" onClick="popup_sn('#imgl_form')" class="d-block" style="width:100%">
               <?php  if($plugin['plugin_image_link'] != NULL){ ?>
               <img src="<?php echo $plugin['plugin_image_link']; ?>" alt="profile_image" class="w-100 border-radius-lg shadow-sm">
               <?php }else{ ?>
               <img src="https://www.nicepng.com/png/detail/39-395944_logo-wordpress-plugin-logo.png" alt="profile_image" class="w-100 border-radius-lg shadow-sm">
               <?php } ?>
-
+</a>
             </div>
           </div>
-          <div class="col-auto my-auto">
+          <div class="col my-auto">
             <div class="h-100">
               <h5 class="mb-1">
-                <?php echo $plugin['plugin_name']; ?>
+                
+                    <div class="col-md-4 text-left">
+                    <?php echo $plugin['plugin_name']; ?>
+                      <a href="javascript:;" onClick="popup_sn('#pl_form')">
+                        <i class="fas fa-edit text-secondary text-xs" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Plugin Name and Link"></i>
+                      </a>
+                    </div>
               </h5>
               <p class="mb-0 font-weight-normal text-sm">
                 <a href="<?php echo $plugin['plugin_link']; ?>" target="_blank"><?php echo $plugin['plugin_link']; ?></a>
               </p>
             </div>
           </div>
-          <div class="col-lg-4 col-md-6 my-sm-auto ms-sm-auto me-sm-0 mx-auto mt-3">
+          <div class="col-lg-2 col-md-6 my-sm-auto ms-sm-auto me-sm-0 mx-auto mt-3">
             <div class="nav-wrapper position-relative end-0">
-              <ul class="nav nav-pills nav-fill p-1" role="tablist">
-                <li class="nav-item">
-                  <a class="nav-link mb-0 px-0 py-1 bg-success text-white" href="<?php echo base_url(); ?>plugins/view/<?php echo $plugin['id']; ?>" role="tab" aria-selected="true">
-                    <i class="material-icons text-lg position-relative">info</i>
-                    <span class="ms-1">Plugin Information</span>
+            <?php if($status['plugin_status'] == 0){ ?>
+                  <a class="btn btn-sm w-100 mb-0 px-0 py-1 bg-danger text-white" href="javascript:;" onClick="popup_sn('#approval_form')">
+                    <i class="material-icons text-lg position-relative">visibility</i>
+                    <span class="ms-1">Review</span>
                   </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link mb-0 px-0 py-1" href="<?php echo base_url(); ?>plugins/update/<?php echo $plugin['id']; ?>" role="tab" aria-selected="false">
-                    <i class="material-icons text-lg position-relative">settings</i>
-                    <span class="ms-1">Edit</span>
+            <?php }else{ ?>
+                  <a class="btn btn-sm w-100 mb-0 px-0 py-1 bg-success text-white" href="javascript:;">
+                    <i class="material-icons text-lg position-relative">check</i>
+                    <span class="ms-1">Checked</span>
                   </a>
-                </li>
-              </ul>
+            <?php } ?>
             </div>
           </div>
         </div>
@@ -57,52 +59,61 @@
                   </div>
                 </div>
                 <div class="card-body p-3">
+                <?php echo form_open('plugins/for-review-view/'.$plugin['id']); ?>
                   <ul class="list-group">
-                    <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Author:</strong> &nbsp; <?php echo $plugin['plugin_author']; ?></li>
-                    <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Version:</strong> &nbsp;  <?php echo $plugin['plugin_version']; ?></li>
-                    <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Tested up to (WordPress Version):</strong> &nbsp;  <?php echo $plugin['plugin_testup_wp']; ?></li>
-                    <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Compatible WordPress Version:</strong> &nbsp;  <?php echo $plugin['plugin_compatible_wp']; ?></li>
-                    <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Last Update:</strong> &nbsp;  <?php echo $plugin['plugin_last_updated']; ?></li>
-                    <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Request By:</strong> &nbsp;  <?php echo $request_by[$plugin['plugin_requested_by']]; ?></li>
+                    <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Author:</strong> &nbsp; <input class="form-control-outline" name="plugin_author" type="text" value="<?php echo $plugin['plugin_author']; ?>"> </li>
+                    <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Version:</strong> &nbsp;  <input type="text" name="plugin_version"  value="<?php echo $plugin['plugin_version']; ?>"></li>
+                    <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Tested up to (WordPress Version):</strong> &nbsp; <input  name="plugin_testup_wp" type="text" value="<?php echo $plugin['plugin_testup_wp'];  ?>"></li>
+                    <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Compatible WordPress Version:</strong> &nbsp; <input type="text" name="plugin_compatible_wp" value="<?php echo $plugin['plugin_compatible_wp'];  ?>"></li>
+                    <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Last Update:</strong> &nbsp; <input type="text" name="plugin_last_updated" value="<?php echo $plugin['plugin_last_updated'];  ?>"> </li>
+                    <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Request By:</strong> &nbsp; <div class="input-group input-group-static mb-4">
+                          <select class="form-control" id="request_type" name="plugin_requested_by" required>
+                            <option value="">Click here to select</option>
+                            <option value="1" <?php if($plugin['plugin_requested_by'] == 1) { echo 'selected';} ?>>Standard Protocol</option>
+                            <option value="2" <?php if($plugin['plugin_requested_by'] == 2) { echo 'selected';} ?>>Client Request</option>
+                          </select>
+                        </div>
+                      </li>
                   </ul>
+                  <input type="submit" value="Update" name="update_btn" class="btn btn-sm btn-success col-lg-4 col-md-6 my-sm-auto ms-sm-auto me-sm-0 mx-auto mt-3 end-0">
+                   <?php echo form_close(); ?>
                 </div>
               </div>
             </div>
             <div class="col-12 col-xl-4">
               <div class="card card-plain h-100">
                 <div class="card-header pb-0 p-3">
-                  <h6 class="mb-0">Security Notes</h6>
+                  <h6 class="mb-0">Security Notes 
+                        <a href="javascript:;" onClick="popup_sn('#sn_form')">
+                        <i class="fas fa-edit text-secondary text-xs" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Security Notes"></i>
+                      </a>
+                    </h6>
                 </div>
                 <div class="card-body p-3">
                   <p class="text-sm">
                     <?php echo $plugin['plugin_security_notes']; ?>
-                  </p>
+
+
+
+                    
+                  </p>          
                 </div>
               </div>
             </div>
             <div class="col-12 col-xl-4">
               <div class="card card-plain h-100">
                 <div class="card-header pb-0 p-3">
-                  <h6 class="mb-0">Conclusion</h6>
+                  <h6 class="mb-0">Conclusion 
+                      <a href="javascript:;" onClick="popup_sn('#c_form')">
+                        <i class="fas fa-edit text-secondary text-xs" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Conclusion"></i>
+                      </a>
+                  </h6>
                 </div>
                 <div class="card-body p-3">
                   <p class="text-sm">
                     <?php echo $plugin['plugin_conclusion']; ?>
                   </p>
                 </div>
-              </div>
-            </div>
-            <div class="col-12">
-              <div class="card-footer txt-right">
-                  <ul>
-                    <li class="d-inline-block pt-0 text-sm mx-2"><strong class="text-dark">Added By:</strong> &nbsp; <?php echo $plugin['first_name']; ?></li>
-                    <li class="d-inline-block pt-0 text-sm"><strong class="text-dark">Added Date:</strong> &nbsp; <?php echo dateTimeDateFunction($plugin['plugin_date_added']); ?></li>
-                  </ul>
-                  <ul>
-        
-                    <li class="d-inline-block pt-0 text-sm mx-2"><strong class="text-dark">Updated By:</strong> &nbsp; <?php if($plugin['plugin_updated_by'] != NULL){ echo $this->users_model->get_user($plugin['plugin_updated_by'])['first_name']; }else{ echo "-"; } ?></li>
-                    <li class="d-inline-block pt-0 text-sm"><strong class="text-dark">Updated Date:</strong> &nbsp; <?php echo dateTimeDateFunction($plugin['plugin_date_update']); ?></li>
-                  </ul>
               </div>
             </div>
             <!-- <div class="col-12 mt-4">
@@ -265,3 +276,142 @@
         </div>
       </div>
     </div>
+
+
+      <div class="modal-custom d-none" id="sn_form">
+      <div class="row">
+        <div class="col">
+          <div class="card card-custom blue-grey darken-1 p-4 col-5">
+          <?php echo form_open('plugins/for-review-view/'.$plugin['id']); ?>
+            <div class="card-content white-text">
+              <span class="card-title h6 pb-3">Security Notes</span>
+              <hr class="my-2">
+              <textarea name="security_notes" id="security_notes"><?php echo $plugin['plugin_security_notes']; ?></textarea>
+            </div>
+            <div class="card-action mt-2">
+              <input type="submit" name="update_sn_form" value="Update" class="btn btn-sm btn-success" data-bs-toggle="tooltip" data-bs-placement="top" title="Update">
+              <a href="#" class="btn btn-sm btn-danger close-btn" data-bs-toggle="tooltip" data-bs-placement="top" title="Close"><i class="large material-icons">close</i></a>
+            <?php echo form_close(); ?>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+
+
+      <div class="modal-custom d-none" id="c_form">
+      <div class="row">
+        <div class="col">
+          <div class="card card-custom blue-grey darken-1 p-4 col-5">
+          <?php echo form_open('plugins/for-review-view/'.$plugin['id']); ?>
+            <div class="card-content white-text">
+              <span class="card-title h6 pb-3">Conclusion</span>
+              <hr class="my-2">
+              <textarea name="conclusion" id="conclusion"><?php echo $plugin['plugin_conclusion']; ?></textarea>
+            </div>
+            <div class="card-action mt-2">
+              <input type="submit" name="update_c_form" value="Update" class="btn btn-sm btn-success" data-bs-toggle="tooltip" data-bs-placement="top" title="Update">
+              <a href="#" class="btn btn-sm btn-danger close-btn" data-bs-toggle="tooltip" data-bs-placement="top" title="Close"><i class="large material-icons">close</i></a>
+            <?php echo form_close(); ?>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+
+
+      <div class="modal-custom d-none" id="pl_form">
+      <div class="row">
+        <div class="col">
+          <div class="card card-custom blue-grey darken-1 p-4 col-5">
+          <?php echo form_open('plugins/for-review-view/'.$plugin['id']); ?>
+            <div class="card-content white-text">
+            
+              <span class="card-title h6 pb-3">Basic Information</span>
+              <hr class="my-2">
+                  <div class="col-sm-12">
+                    <div class="input-group input-group-static mb-3">
+                      <label>Plugin Name</label>
+                      <input type="text" class="form-control" name="plugin_name" value="<?php echo $plugin['plugin_name']; ?>">
+                    </div>
+                    <div class="input-group input-group-static mb-3">
+                      <label>Plugin Link</label>
+                      <input type="text" class="form-control" name="plugin_link" value="<?php echo $plugin['plugin_link']; ?>">
+                    </div>
+                  </div>
+            </div>
+            <div class="card-action mt-2">
+            <input type="submit" name="update_pl_form" value="Update" class="btn btn-sm btn-success" data-bs-toggle="tooltip" data-bs-placement="top" title="Update">
+              <a href="#" class="btn btn-sm btn-danger close-btn" data-bs-toggle="tooltip" data-bs-placement="top" title="Close"><i class="large material-icons">close</i></a>
+              <?php echo form_close(); ?>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+
+    
+      <div class="modal-custom d-none" id="imgl_form">
+      <div class="row">
+        <div class="col">
+          <div class="card card-custom blue-grey darken-1 p-4 col-5">
+            <?php echo form_open('plugins/for-review-view/'.$plugin['id']); ?>
+            <div class="card-content white-text">
+              <span class="card-title h6 pb-3">Basic Information</span>
+              <hr class="my-2">
+                  <div class="col-sm-12">
+                      <div class="input-group input-group-static mb-3">
+                        <label>Image plugin Link (Optional)</label>
+                        <input type="text" class="form-control" name="plugin_image_link" value="<?php echo $plugin['plugin_image_link'] ?>">
+                      </div>
+                  </div>
+            </div>
+            <div class="card-action mt-2">
+            <input type="submit" name="update_imgl_form" value="Update" class="btn btn-sm btn-success" data-bs-toggle="tooltip" data-bs-placement="top" title="Update">
+              <a href="#" class="btn btn-sm btn-danger close-btn" data-bs-toggle="tooltip" data-bs-placement="top" title="Close"><i class="large material-icons">close</i></a>
+              <?php echo form_close(); ?>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+
+      <div class="modal-custom d-none" id="approval_form">
+      <div class="row">
+        <div class="col">
+          <div class="card card-custom blue-grey darken-1 p-4 col-5">
+            <?php echo form_open('plugins/for-review-view/'.$plugin['id']); ?>
+            <div class="card-content white-text">
+              <span class="card-title h6 pb-3">Review Note</span>
+              <hr class="my-2">
+                  <div class="col-sm-12">
+                      <div class="input-group input-group-static mb-3">
+                        <label>Additional Notes</label>
+                        <textarea name="reviewed_notes" id="reviewed_notes"></textarea>
+                      </div>
+                  </div>
+                   <div class="input-group input-group-static mb-3">
+                          <select class="form-control" id="plugin_status" name="plugin_status" required>
+                            <option value="0">For Review</option>
+                            <option value="1">Approved</option>
+                            <option value="2">Not Sate</option>
+   
+                          </select>
+                      </div>
+                        
+                  
+            </div>
+            <div class="card-action mt-2">
+            <input type="submit" name="save_btn" value="Save" class="btn btn-sm btn-success" data-bs-toggle="tooltip" data-bs-placement="top" title="Save">
+              <a href="#" class="btn btn-sm btn-danger close-btn" data-bs-toggle="tooltip" data-bs-placement="top" title="Close"><i class="large material-icons">close</i></a>
+              <?php echo form_close(); ?>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>

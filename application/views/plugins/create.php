@@ -4,7 +4,7 @@
           <div class="card my-4">
             <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
               <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3 d-flex justify-content-between align-center px-3">
-                <h6 class="text-white ps-3 d-inline-block pt-3">List of Plugins</h6>
+                <h6 class="text-white ps-3 d-inline-block pt-3">Create Plugin</h6>
                 <!-- <a href="<?php echo base_url(); ?>plugins/create" class="btn btn-success mr-3 d-block mr-5">Add Plugin</a>  -->
               </div>
             </div>
