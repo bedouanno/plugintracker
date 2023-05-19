@@ -29,9 +29,11 @@ class Plugins extends CI_Controller {
         public function index(){
                 $data = $this->user_info;
                 $this->session_users();
-                $data['title'] = 'List of Plugins';
+                $data['title'] = 'List of Researched Plugins';
 
-                $data['plugins'] = $this->plugins_model->get_plugins();
+                // $data['plugins'] = $this->plugins_model->get_plugins();
+                $data['plugins'] = $this->plugins_model->get_review_plugins(0);
+
 
                 $this->load->view('includes/head');
                 $this->load->view('includes/siderbar');

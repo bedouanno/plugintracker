@@ -3,9 +3,9 @@
         <div class="col-12">
           <div class="card my-4">
             <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
-              <div class="bg-gradient-info shadow-primary border-radius-lg pt-4 pb-3 d-flex justify-content-between align-center px-3">
+              <div class="bg-gradient-success shadow-primary border-radius-lg pt-4 pb-3 d-flex justify-content-between align-center px-3">
                 <h6 class="text-white ps-3 d-inline-block pt-3">List of For Approved Plugins</h6>
-                <!-- <a href="<?php echo base_url(); ?>plugins/create" class="btn btn-success mr-3 d-block mr-5">Add Plugin</a>  -->
+                  <a href="<?php echo base_url(); ?>" class="btn btn-info mr-3 d-block mr-5"><span><i class="fa fa-home text-white text-sm"></i> Back to Home Page </span></a> 
               </div>
             </div>
             <div class="card-body px-0 pb-2">
@@ -61,7 +61,7 @@
                         <a href="javascript:;" class="badge bg-success text-success font-weight-bold text-xxs text-white">
                           Approved
                         </a>
-                        <a href="<?php echo base_url(); ?>plugins/view/<?php echo $plugin['id']; ?>" class="badge bg-secondary text-success font-weight-bold text-xxs text-white">
+                        <a href="<?php echo base_url(); ?>view/plugin/id-<?php echo $plugin['id']; ?>" class="badge bg-secondary text-success font-weight-bold text-xxs text-white">
                           <i class="material-icons text-xxs position-relative">visibility</i>
                         </a>
                       </td>

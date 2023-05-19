@@ -15,7 +15,7 @@ public function index() {
     if ($this->form_validation->run() == FALSE) {
 
         if(isset($this->session->userdata['signed_in'])){
-                redirect('home');
+                redirect('dashboard');
             }else{
 
                 $this->load->view('login');
@@ -37,7 +37,7 @@ public function index() {
 
                 // Add user data in session
                 $this->session->set_userdata('signed_in', $session_data);
-                redirect('home');
+                redirect('dashboard');
             }
         } else {
             $data['sitename'] = 'PluginTracker';

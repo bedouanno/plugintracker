@@ -55,7 +55,7 @@ $route['users/create'] = 'users/create';
 $route['user/view/(:any)'] = 'users/view/$1';
 $route['user/update/(:any)'] = 'users/update/$1';
 
-$route['plugins/list'] = 'plugins/index';
+$route['plugins/research'] = 'plugins/index';
 $route['plugins/create'] = 'plugins/create';
 $route['plugins/view/(:any)'] = 'plugins/view/$1';
 $route['plugins/update/(:any)'] = 'plugins/update/$1';
@@ -66,9 +66,14 @@ $route['plugins/approved'] = 'plugins/approved_plugins';
 $route['plugins/for-review'] = 'plugins/review';
 $route['plugins/for-review-view/(:any)'] = 'plugins/review_view/$1';
 
+$route['home'] = 'main/home';
+$route['approved-list'] = 'main/approved_list';
+$route['not-safe-list'] = 'main/not_safe_list';
+$route['view/plugin/id-(:any)'] = 'main/view/$1';
+
 $route['logout'] = 'login/logout';
 $route['login'] = 'login';
-$route['home'] = 'main/index';
-$route['default_controller'] = 'main/index';
+$route['dashboard'] = 'main/index';
+$route['default_controller'] = 'main/home';
 $route['404_override'] = 'main/error_page';
 $route['translate_uri_dashes'] = FALSE;

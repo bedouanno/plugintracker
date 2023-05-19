@@ -15,7 +15,7 @@
     <ul class="navbar-nav">
       
 <li class="nav-item">
-  <a class="nav-link text-white " href="<?php echo base_url(); ?>">
+  <a class="nav-link text-white " href="<?php echo base_url(); ?>dashboard">
     
       <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
         <i class="material-icons opacity-10">dashboard</i>
@@ -27,13 +27,13 @@
 
   
 <li class="nav-item">
-  <a class="nav-link text-white " href="<?php echo base_url(); ?>plugins/list">
+  <a class="nav-link text-white " href="<?php echo base_url(); ?>plugins/research">
     
       <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
         <i class="material-icons opacity-10">table_view</i>
       </div>
     
-    <span class="nav-link-text ms-1">Plugin List</span>
+    <span class="nav-link-text ms-1">Research Plugins</span>
   </a>
 </li>
 

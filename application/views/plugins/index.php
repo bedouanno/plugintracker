@@ -20,6 +20,8 @@
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Compatible <span class="d-block">WordPress Version</span></th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Last Updated</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Requested By</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action</th>
                       <th class="text-secondary opacity-7"></th>
                     </tr>
                   </thead>
@@ -56,7 +58,15 @@
                       <!-- <?php //echo $rby ?> -->
                           <p class="text-xs font-weight-bold mb-0"><?php echo $request_by[$plugin['plugin_requested_by']]; ?></p>
                       </td>
-                      <td class="align-middle">
+                      <td class="align-middle text-center">
+                      <!-- <?php //echo $rby ?> -->
+                        
+                          <div class="spinner-grow text-success small" role="status">
+                            <span class="sr-only">Loading...</span>
+                          </div>    
+                       
+                      </td>
+                      <td class="align-middle-sm text-center">
                         <a href="<?php echo base_url(); ?>plugins/view/<?php echo $plugin['id']; ?>" class="badge bg-success text-success font-weight-bold text-xxs text-white">
                           View
                         </a>
