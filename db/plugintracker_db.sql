@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 18, 2023 at 11:03 AM
+-- Generation Time: Jun 26, 2023 at 10:31 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
 
@@ -20,6 +20,29 @@ SET time_zone = "+00:00";
 --
 -- Database: `plugintracker_db`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_activity_log`
+--
+
+CREATE TABLE `tbl_activity_log` (
+  `id` int(11) NOT NULL,
+  `user_id_log` int(11) NOT NULL,
+  `plugin_id_log` int(11) NOT NULL,
+  `activity_desc` varchar(80) NOT NULL DEFAULT 'Other',
+  `activity_datetime` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tbl_activity_log`
+--
+
+INSERT INTO `tbl_activity_log` (`id`, `user_id_log`, `plugin_id_log`, `activity_desc`, `activity_datetime`) VALUES
+(21, 2, 7, 'Created plugin for review.', '2023-06-26 14:43:19'),
+(22, 1, 7, 'Reviewed plugin - Approved.', '2023-06-26 14:43:53'),
+(23, 1, 1, 'Updated plugin\'s basic information.', '2023-06-26 16:14:44');
 
 -- --------------------------------------------------------
 
@@ -59,6 +82,15 @@ CREATE TABLE `tbl_plugins` (
   `plugin_date_update` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `tbl_plugins`
+--
+
+INSERT INTO `tbl_plugins` (`id`, `plugin_name`, `plugin_link`, `plugin_image_link`, `plugin_author`, `plugin_version`, `plugin_testup_wp`, `plugin_compatible_wp`, `plugin_last_updated`, `plugin_security_notes`, `plugin_conclusion`, `plugin_requested_by`, `plugin_added_by`, `plugin_date_added`, `plugin_updated_by`, `plugin_date_update`) VALUES
+(1, 'Accessibility by UserWay', 'https://wordpress.org/plugins/userway-accessibility-widget/', 'https://ps.w.org/userway-accessibility-widget/assets/icon.svg?rev=2526447', 'UserWay.org', '2.5.0', '6.1.2', '4.7 or higher ', '3 months ago', 'In order to prevent unauthorized access or disclosure UserWay has put in place suitable physical, electronic and managerial procedures to safeguard and secure the information collected online. UserWay uses industry standard SSL (secure socket layer) encryption to transfer private personal information.', '- safe to use', 1, 1, '2023-05-19 07:21:52', 1, '2023-06-26 13:32:46'),
+(3, 'ACFs', 'https://wordpress.org/plugins/advanced-custom-fields', 'https://ps.w.org/advanced-custom-fields/assets/icon-128x128.png?rev=1082746', 'UserWay.org', '23', '6.1.2', 'test', 'n/a', 'test test', 'test', 2, 1, '2023-05-19 08:58:46', 1, '2023-06-23 18:27:21'),
+(7, 'Google Sitemap XML', 'sitemap.xml', '', 'Joopee', '1.2', '23.2', '23.23', '12.43', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sed libero consequat, vestibulum tortor nec, luctus neque. Donec nec mauris id turpis tincidunt placerat. Maecenas tincidunt sapien a nibh blandit rutrum. Aliquam accumsan feugiat nisi, vitae commodo nisi tincidunt a. Nullam ultricies nunc ut nunc consequat, in eleifend mi mollis. Sed dignissim enim a dui fermentum, eget auctor lacus venenatis. Morbi venenatis risus id quam lacinia, ac fermentum ligula convallis. Nulla facilisi. Proin consectetur aliquam odio, eu mollis turpis aliquet vel. Nullam ultrices lectus vel libero luctus, et posuere justo hendrerit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Fusce eu lectus id felis viverra placerat ac id metus. Fusce non justo id erat dapibus hendrerit in vel mauris. Nulla facilisi. Sed lacinia risus nec tellus tincidunt, sit amet bibendum lectus condimentum. Nullam quis mi semper, finibus metus sed, ullamcorper lorem.', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sed libero consequat, vestibulum tortor nec, luctus neque. Donec nec mauris id turpis tincidunt placerat. Maecenas tincidunt sapien a nibh blandit rutrum. Aliquam accumsan feugiat nisi, vitae commodo nisi tincidunt a. Nullam ultricies nunc ut nunc consequat, in eleifend mi mollis. Sed dignissim enim a dui fermentum, eget auctor lacus venenatis. Morbi venenatis risus id quam lacinia, ac fermentum ligula convallis. Nulla facilisi. Proin consectetur aliquam odio, eu mollis turpis aliquet vel. Nullam ultrices lectus vel libero luctus, et posuere justo hendrerit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Fusce eu lectus id felis viverra placerat ac id metus. Fusce non justo id erat dapibus hendrerit in vel mauris. Nulla facilisi. Sed lacinia risus nec tellus tincidunt, sit amet bibendum lectus condimentum. Nullam quis mi semper, finibus metus sed, ullamcorper lorem.', 1, 2, '2023-06-26 14:43:19', NULL, '2023-06-26 14:43:19');
+
 -- --------------------------------------------------------
 
 --
@@ -74,6 +106,19 @@ CREATE TABLE `tbl_plugin_status` (
   `reviewed_date` date DEFAULT NULL,
   `plugin_status` int(11) NOT NULL DEFAULT 0 COMMENT '0 = For Review, 1 = Approved, 2 = Not Safe'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tbl_plugin_status`
+--
+
+INSERT INTO `tbl_plugin_status` (`id`, `plugin_id`, `committee_id`, `reviewed_notes`, `reviewed_by`, `reviewed_date`, `plugin_status`) VALUES
+(1, 1, 1, 'In order to prevent unauthorized access or disclosure UserWay has put in place suitable physical, electronic and managerial procedures to safeguard and secure the information collected online. UserWay uses industry standard SSL (secure socket layer) encryption to transfer private personal information. ', 1, '2023-05-19', 1),
+(2, 2, 1, 'test', 1, '2023-05-19', 2),
+(3, 3, 1, 'test', 1, '2023-06-26', 2),
+(4, 4, 1, 'test', 1, '2023-06-26', 1),
+(5, 5, 1, 'ok', 1, '2023-06-26', 1),
+(6, 6, 2, 'TEST', 1, '2023-06-26', 2),
+(7, 7, 2, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sed libero.', 1, '2023-06-26', 1);
 
 -- --------------------------------------------------------
 
@@ -123,6 +168,12 @@ INSERT INTO `tbl_users_position` (`id`, `position_name`) VALUES
 --
 
 --
+-- Indexes for table `tbl_activity_log`
+--
+ALTER TABLE `tbl_activity_log`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `tbl_assigned_committee`
 --
 ALTER TABLE `tbl_assigned_committee`
@@ -158,6 +209,12 @@ ALTER TABLE `tbl_users_position`
 --
 
 --
+-- AUTO_INCREMENT for table `tbl_activity_log`
+--
+ALTER TABLE `tbl_activity_log`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+
+--
 -- AUTO_INCREMENT for table `tbl_assigned_committee`
 --
 ALTER TABLE `tbl_assigned_committee`
@@ -167,13 +224,13 @@ ALTER TABLE `tbl_assigned_committee`
 -- AUTO_INCREMENT for table `tbl_plugins`
 --
 ALTER TABLE `tbl_plugins`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `tbl_plugin_status`
 --
 ALTER TABLE `tbl_plugin_status`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `tbl_users`

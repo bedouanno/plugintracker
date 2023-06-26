@@ -140,6 +140,12 @@ $('#password, #confirm_password').on('keyup', function () {
 </script>
 
 
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.js"></script>
+
+<!-- Main JS-->
+<script src="<?php echo base_url(); ?>assetsv2/js/plugins.js"></script>
+
+
 
 
   </body>

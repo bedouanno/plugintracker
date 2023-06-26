@@ -108,32 +108,24 @@
                   <h6 class="mb-0">Activity Log</h6>
                 </div>
                 <div class="col-6 text-end">
-                  <button class="btn btn-outline-primary btn-sm mb-0">View All</button>
+                  <!-- <button class="btn btn-outline-primary btn-sm mb-0">View All</button> -->
                 </div>
               </div>
             </div>
             <div class="card-body p-3 pb-0">
               <ul class="list-group">
+                <?php foreach($activity_logs as $log): ?>
                 <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
                   <div class="d-flex flex-column">
-                    <h6 class="mb-1 text-dark font-weight-bold text-sm">March, 01, 2020</h6>
-                    <span class="text-xs">#777</span>
+                    <h6 class="mb-1 text-dark font-weight-bold text-sm"><?php echo $log['plugin_name']; ?> - <?php echo $log['activity_datetime']; ?></h6>
+                    <span class="text-xs"><?php echo $log['activity_desc']; ?></span>
                   </div>
                   <div class="d-flex align-items-center text-sm">
                     -
-                    <button class="btn btn-link text-dark text-sm mb-0 px-0 ms-4"><i class="material-icons text-lg position-relative me-1">widgets</i> view</button>
+                    <a href="<?php echo base_url(); ?>plugins/view/<?php echo $log['plugin_id_log']; ?>" class="btn btn-link text-dark text-sm mb-0 px-0 ms-4"><i class="material-icons text-lg position-relative me-1">widgets</i> view</a>
                   </div>
                 </li>
-                <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
-                  <div class="d-flex flex-column">
-                    <h6 class="mb-1 text-dark font-weight-bold text-sm">March, 01, 2020</h6>
-                    <span class="text-xs">#777</span>
-                  </div>
-                  <div class="d-flex align-items-center text-sm">
-                    -
-                    <button class="btn btn-link text-dark text-sm mb-0 px-0 ms-4"><i class="material-icons text-lg position-relative me-1">widgets</i> view</button>
-                  </div>
-                </li>
+                <?php endforeach; ?>
               </ul>
             </div>
           </div>

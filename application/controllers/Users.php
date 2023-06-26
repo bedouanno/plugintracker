@@ -38,7 +38,7 @@ class Users extends CI_Controller {
                 // exit;
 
                 $this->load->view('includes/head');
-                $this->load->view('includes/siderbar');
+                $this->load->view('includes/siderbar', $data);
                 $this->load->view('includes/header', $data);
                 $this->load->view('users/index', $data);
                 $this->load->view('includes/footer');
@@ -65,7 +65,7 @@ class Users extends CI_Controller {
 
                 if($this->form_validation->run() === FALSE){ 
                         $this->load->view('includes/head');
-                        $this->load->view('includes/siderbar');
+                        $this->load->view('includes/siderbar', $data);
                         $this->load->view('includes/header', $data);
                         $this->load->view('users/create', $data);
                         $this->load->view('includes/footer');
@@ -96,6 +96,12 @@ class Users extends CI_Controller {
 
                 $data['title'] = $data['user']['first_name'];
 
+
+                $data['activity_logs'] = $this->plugins_model->get_activity_logs_users($id);
+
+
+// print_r($data['']);
+// exit;
                 // $data['users'] = $this->users_model->get_user($id);
 
                 // print_r($data['users']);
@@ -103,7 +109,7 @@ class Users extends CI_Controller {
                 // exit;
 
                 $this->load->view('includes/head');
-                $this->load->view('includes/siderbar');
+                $this->load->view('includes/siderbar' , $data);
                 $this->load->view('includes/header', $data);
                 $this->load->view('users/view', $data);
                 $this->load->view('includes/footer');
@@ -130,7 +136,7 @@ class Users extends CI_Controller {
 
                 if($this->form_validation->run() === FALSE){ 
                         $this->load->view('includes/head');
-                        $this->load->view('includes/siderbar');
+                        $this->load->view('includes/siderbar',$data);
                         $this->load->view('includes/header', $data);
                         $this->load->view('users/update', $data);
                         $this->load->view('includes/footer');

@@ -15,6 +15,7 @@ class Plugins extends CI_Controller {
                     'robots' => 'noindex,nofollow',
                     'user_info' => $this->users_model->get_user_session($this->session->userdata('signed_in')['username']),
                     'request_by' => array("N/A", "Standard Protocol", "Client Request"),
+                    'plugin_status_name' => array("For Review", "Approved", "Not Safe"),
                     'current_datetime' => date('y-m-d H:i:s')
                 );
             } 
@@ -36,7 +37,7 @@ class Plugins extends CI_Controller {
 
 
                 $this->load->view('includes/head');
-                $this->load->view('includes/siderbar');
+                $this->load->view('includes/siderbar', $data);
                 $this->load->view('includes/header', $data);
                 $this->load->view('plugins/index', $data);
                 $this->load->view('includes/footer');
@@ -47,10 +48,7 @@ class Plugins extends CI_Controller {
                 $user_id = $data['user_info']['id'];
                 $this->session_users();
                 $data['title'] = 'Add Plugin';
-                // print_r($data['current_datetime']);
-
-                // exit;
-
+ 
                 $this->form_validation->set_rules('plugin_name','Plugin Name','required');
                 $this->form_validation->set_rules('plugin_link','Plugin Link','required');
                 $this->form_validation->set_rules('plugin_author','Plugin Author');
@@ -67,7 +65,7 @@ class Plugins extends CI_Controller {
 
                 if($this->form_validation->run() === FALSE){ 
                         $this->load->view('includes/head');
-                        $this->load->view('includes/siderbar');
+                        $this->load->view('includes/siderbar', $data);
                         $this->load->view('includes/header', $data);
                         $this->load->view('plugins/create', $data);
                         $this->load->view('includes/footer');
@@ -94,16 +92,23 @@ class Plugins extends CI_Controller {
                                 'plugin_id' => $this->db->insert_id(),
                                 'committee_id' => $user_id
                         );
+                        // >>>>>>>>>>>>>>>> Activity LOGS >>>>>>>>>>>>>>>>>> //
+                        $post_data3 = array(
+                                'plugin_id_log' => $this->db->insert_id(),
+                                'user_id_log' => $user_id,
+                                'activity_desc' => 'Created plugin for review.',
+                                'activity_datetime' => $data['current_datetime']
+                        );
 
-                        // exit;
+                        $this->plugins_model->create_activity_log($post_data3);
 
+                        // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> //
                         $this->plugins_model->create_review_plugin($post_data2);
+
+
                         $this->session->set_flashdata('msg', 'Created Successfully!');
 
                         redirect('plugins/create');
-                        
-
-                        // print_r($post_data);
                 }
         }
 
@@ -116,8 +121,18 @@ class Plugins extends CI_Controller {
 
                 $data['plugin'] = $this->plugins_model->get_plugin($id);
 
+
+               $data['array_status'] = $data['plugin_status_name'];
+  
+                $data['plugin_status'] = $this->plugins_model->get_review_plugin($id);
+
+        //                 print_r($data['plugin_status']);
+
+        // exit;
+
+
                 $this->load->view('includes/head');
-                $this->load->view('includes/siderbar');
+                $this->load->view('includes/siderbar', $data);
                 $this->load->view('includes/header', $data);
                 $this->load->view('plugins/view', $data);
                 $this->load->view('includes/footer');
@@ -161,7 +176,7 @@ class Plugins extends CI_Controller {
                 if($this->form_validation->run() === FALSE){
                 
                         $this->load->view('includes/head');
-                        $this->load->view('includes/siderbar');
+                        $this->load->view('includes/siderbar', $data);
                         $this->load->view('includes/header', $data);
                         $this->load->view('plugins/update', $data);
                         $this->load->view('includes/footer');
@@ -176,8 +191,12 @@ class Plugins extends CI_Controller {
                                         'plugin_requested_by' => $this->input->post('plugin_requested_by'),
                                         'plugin_updated_by' => $user_id
 
+
                                         
                                 );
+
+                                $activity_desc = "Updated plugin's basic information.";
+
 
                         endif;
 
@@ -186,6 +205,8 @@ class Plugins extends CI_Controller {
                                      'plugin_security_notes' => $this->input->post('security_notes'),
                                      'plugin_updated_by' => $user_id
                                 );
+                                $activity_desc = "Updated plugin's security notes.";
+
                         endif;
 
                          if($this->input->post('update_c_form')):
@@ -193,6 +214,9 @@ class Plugins extends CI_Controller {
                                      'plugin_conclusion' => $this->input->post('conclusion'),
                                      'plugin_updated_by' => $user_id
                                 );
+
+                                $activity_desc = "Updated plugin conclusion.";
+
                         endif;
 
                          if($this->input->post('update_pl_form')):
@@ -201,6 +225,8 @@ class Plugins extends CI_Controller {
                                         'plugin_link' => $this->input->post('plugin_link'),
                                         'plugin_updated_by' => $user_id
                                 );
+                                $activity_desc = "Updated plugin name and link.";
+
                          endif;
 
                         if($this->input->post('update_imgl_form')):
@@ -209,10 +235,24 @@ class Plugins extends CI_Controller {
                                 'plugin_image_link' => $this->input->post('plugin_image_link'),
                                 'plugin_updated_by' => $user_id
                                 );
+
+                                $activity_desc = "Updated plugin image profile.";
                         endif;
 
 
                         $this->plugins_model->update_plugin_info($id, $post_data);
+
+                        // >>>>>>>>>>>>>>>> Activity LOGS >>>>>>>>>>>>>>>>>> //
+                        $post_data3 = array(
+                                'plugin_id_log' => $id,
+                                'user_id_log' => $user_id,
+                                'activity_desc' => $activity_desc,
+                                'activity_datetime' => $data['current_datetime']
+                        );
+                        $this->plugins_model->create_activity_log($post_data3);
+                        // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> //
+
+
                         $this->session->set_flashdata('msg', 'Updated Successfully!');
                         redirect('plugins/update/'.$id);
                 
@@ -228,7 +268,7 @@ class Plugins extends CI_Controller {
                 $data['plugins'] = $this->plugins_model->get_review_plugins(0);
 
                 $this->load->view('includes/head');
-                $this->load->view('includes/siderbar');
+                $this->load->view('includes/siderbar', $data);
                 $this->load->view('includes/header', $data);
                 $this->load->view('plugins/for_approval', $data);
                 $this->load->view('includes/footer');
@@ -284,7 +324,7 @@ class Plugins extends CI_Controller {
                 if($this->form_validation->run() === FALSE){
                 
                         $this->load->view('includes/head');
-                        $this->load->view('includes/siderbar');
+                        $this->load->view('includes/siderbar', $data);
                         $this->load->view('includes/header', $data);
                         $this->load->view('plugins/for_approval_view', $data);
                         $this->load->view('includes/footer');
@@ -305,6 +345,7 @@ class Plugins extends CI_Controller {
 
                                         
                                 );
+                                
 
                         endif;
 
@@ -347,14 +388,48 @@ class Plugins extends CI_Controller {
                                 'reviewed_date' => $data['current_datetime'],
                                 'reviewed_by' => $user_id
                         );
+                        // <option value="1">Approved</option>
+                        // <option value="2">Not Sate</option>
 
-                                $this->plugins_model->update_reviewed_plugin($id, $post_data2);
+                        if($this->input->post('plugin_status') == 1):
+                                $activity_desc = 'Approved';
+                        endif;
+
+                        if($this->input->post('plugin_status') == 2):
+                                $activity_desc = 'Not Safe';
+                        endif;
+
+
+                        // >>>>>>>>>>>>>>>> Activity LOGS >>>>>>>>>>>>>>>>>> //
+                        $post_data3 = array(
+                                'plugin_id_log' => $id,
+                                'user_id_log' => $user_id,
+                                'activity_desc' => 'Reviewed plugin - '.$activity_desc.'.',
+                                'activity_datetime' => $data['current_datetime']
+                        );
+                        $this->plugins_model->create_activity_log($post_data3);
+                        // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> //
+
+                        $this->plugins_model->update_reviewed_plugin($id, $post_data2);
 
                         endif;
 
                         if(!empty($post_data)):
-                                $this->plugins_model->update_plugin_info($id, $post_data);
+
+                        // >>>>>>>>>>>>>>>> Activity LOGS >>>>>>>>>>>>>>>>>> //
+                        $post_data3 = array(
+                                'plugin_id_log' => $id,
+                                'user_id_log' => $user_id,
+                                'activity_desc' => 'Updated basic info.',
+                                'activity_datetime' => $data['current_datetime']
+                        );
+                        $this->plugins_model->create_activity_log($post_data3);
+                        // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> //
+
+                        $this->plugins_model->update_plugin_info($id, $post_data);
                         endif;
+
+
 
                         $this->session->set_flashdata('msg', 'Updated Successfully!');
                         redirect('plugins/for-review-view/'.$id);
@@ -371,7 +446,7 @@ class Plugins extends CI_Controller {
                 $data['plugins'] = $this->plugins_model->get_review_plugins(1);
 
                 $this->load->view('includes/head');
-                $this->load->view('includes/siderbar');
+                $this->load->view('includes/siderbar', $data);
                 $this->load->view('includes/header', $data);
                 $this->load->view('plugins/approved_plugin', $data);
                 $this->load->view('includes/footer');
@@ -385,7 +460,7 @@ class Plugins extends CI_Controller {
                 $data['plugins'] = $this->plugins_model->get_review_plugins(2);
 
                 $this->load->view('includes/head');
-                $this->load->view('includes/siderbar');
+                $this->load->view('includes/siderbar', $data);
                 $this->load->view('includes/header', $data);
                 $this->load->view('plugins/not_safe_plugin', $data);
                 $this->load->view('includes/footer');

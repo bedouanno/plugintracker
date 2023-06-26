@@ -73,6 +73,35 @@ class Plugins_model extends CI_Model {
             }
             return $query->count_all_results();
     }
+
+
+    // ACTIVITY LOG
+    public function create_activity_log($data_post){
+        return $this->db->insert('tbl_activity_log',$data_post);
+    }
+
+    public function get_activity_logs($id = FALSE){
+        $this->db->select('*');
+        $this->db->from('tbl_activity_log');
+        $this->db->join('tbl_plugins AS p1', 'tbl_activity_log.plugin_id_log = p1.id');
+        $this->db->join('tbl_plugin_status AS p2', 'p2.plugin_id = tbl_activity_log.plugin_id_log');
+        // $this->db->where('tbl_activity_log.plugin_status', $status);
+        $query = $this->db->get();
+
+        return $query->result_array();
+    }
+
+    public function get_activity_logs_users($id = FALSE){
+        $this->db->select('*');
+        $this->db->from('tbl_activity_log');
+        $this->db->join('tbl_plugins AS p1', 'tbl_activity_log.plugin_id_log = p1.id');
+        $this->db->join('tbl_plugin_status AS p2', 'p2.plugin_id = tbl_activity_log.plugin_id_log');
+        $this->db->where('tbl_activity_log.user_id_log', $id);
+        $query = $this->db->get();
+
+        return $query->result_array();
+    }
+
     
 
 }

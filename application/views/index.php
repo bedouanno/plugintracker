@@ -1,3 +1,4 @@
+<? $object; ?>
     <div class="container-fluid py-4">
       <div class="row">
         <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
@@ -51,7 +52,7 @@
                     <span class="font-weight-bold ms-1">30 Reviewed</span> this month
                   </p>
                 </div>
-                <div class="col-lg-6 col-5 my-auto text-end">
+                <!-- <div class="col-lg-6 col-5 my-auto text-end">
                   <div class="dropdown float-lg-end pe-4">
                     <a class="cursor-pointer" id="dropdownTable" data-bs-toggle="dropdown" aria-expanded="false">
                       <i class="fa fa-ellipsis-v text-secondary"></i>
@@ -62,91 +63,74 @@
                       <li><a class="dropdown-item border-radius-md" href="javascript:;">Something else here</a></li>
                     </ul>
                   </div>
-                </div>
+                </div> -->
               </div>
             </div>
-            <div class="card-body px-0 pb-2">
+            <div class="card-body px-3 pb-2">
               <div class="table-responsive">
-                <table class="table align-items-center mb-0">
+                <table class="table align-items-center mb-0" id="dashBoardTable">
                   <thead>
                     <tr>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Plugins</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Members</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"></th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Users</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Notes</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Date</th>
                     </tr>
                   </thead>
                   <tbody>
+                    <?php foreach($activity_logs as $log): ?>
                     <tr>
                       <td>
                         <div class="d-flex px-2 py-1">
                           <div>
-                            <img src="<?php echo base_url(); ?>assetsv2/img/small-logos/logo-xd.svg" class="avatar avatar-sm me-3" alt="xd">
+  
+
+
+                        <?php  if($log['plugin_image_link'] != NULL){ ?>
+                        <img src="<?php echo $log['plugin_image_link']; ?>" alt="profile_image" class="avatar avatar-sm me-3">
+                        <?php }else{ ?>
+                        <img src="https://www.nicepng.com/png/detail/39-395944_logo-wordpress-plugin-logo.png" class="avatar avatar-sm me-3" alt="profile_image">
+                        <?php } ?>
                           </div>
                           <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm">Material XD Version</h6>
+                            <h6 class="mb-0 text-sm"><?php echo $log['plugin_name']; ?></h6>
                           </div>
                         </div>
                       </td>
                       <td>
                         <div class="avatar-group mt-2">
-                          <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ryan Tompson">
+                          <!-- <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ryan Tompson">
                             <img src="<?php echo base_url(); ?>assetsv2/img/team-1.jpg" alt="team1">
-                          </a>
+                          </a> -->
+                          
+
+                          <?php echo $this->users_model->get_user($log['user_id_log'])['first_name']; ?>
                         </div>
                       </td>
                       <td class="align-middle text-center text-sm">
-                        <span class="text-xs font-weight-bold text-info"> For Review </span>
+                        <?php 
+                        // switch ($log['plugin_status']) {
+                        //     case 0:
+                        //         $statusclass = "text-info";
+                        //         $status_name = "For review";
+                        //         break;
+                        //     case 1:
+                        //         $statusclass = "text-success";
+                        //         $status_name = "Approved";
+                        //         break;
+                        //     case 2:
+                        //         $statusclass = "text-danger";
+                        //         $status_name = "Not safe";
+                        //         break;
+                        // }
+                        ?>
+                        <span class="text-xs font-weight-bold"> <?php echo $log['activity_desc']; ?> </span>
                       </td>
-                      <td class="align-middle">
-                        <div class="progress-wrapper w-75 mx-auto">
-                          <div class="progress-info">
-                            <div class="progress-percentage">
-                              <span class="text-xs font-weight-bold">0%</span>
-                            </div>
-                          </div>
-                          <div class="progress">
-                            <div class="progress-bar bg-gradient-info w-0" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                          </div>
-                        </div>
+                      <td class="align-middle text-center">
+                        <span class="text-xs font-weight-bold text-info"><?php echo dateTimeDateFunction($log['activity_datetime']); ?></span>
                       </td>
                     </tr>
-                    <tr>
-                      <td>
-                        <div class="d-flex px-2 py-1">
-                          <div>
-                            <img src="<?php echo base_url(); ?>assetsv2/img/small-logos/logo-atlassian.svg" class="avatar avatar-sm me-3" alt="atlassian">
-                          </div>
-                          <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm">Add Progress Track</h6>
-                          </div>
-                        </div>
-                      </td>
-                      <td>
-                        <div class="avatar-group mt-2">
-                          <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Romina Hadid">
-                            <img src="<?php echo base_url(); ?>assetsv2/img/team-2.jpg" alt="team5">
-                          </a>
-                          <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Jessica Doe">
-                            <img src="<?php echo base_url(); ?>assetsv2/img/team-4.jpg" alt="team6">
-                          </a>
-                        </div>
-                      </td>
-                      <td class="align-middle text-center text-sm">
-                        <span class="text-xs font-weight-bold text-success"> Approved </span>
-                      </td>
-                      <td class="align-middle">
-                        <div class="progress-wrapper w-75 mx-auto">
-                          <div class="progress-info">
-                            <div class="progress-percentage">
-                              <span class="text-xs font-weight-bold">100%</span>
-                            </div>
-                          </div>
-                          <div class="progress">
-                            <div class="progress-bar bg-gradient-success w-100" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-                          </div>
-                        </div>
-                      </td>
+                    <?php endforeach; ?>
                   </tbody>
                 </table>
               </div>

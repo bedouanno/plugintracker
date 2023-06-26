@@ -8,19 +8,37 @@
           <div class="col-auto">
             <div class="avatar avatar-xl position-relative">
 
-              <?php  if($plugin['plugin_image_link'] != NULL){ ?>
+               <?php  if($plugin['plugin_image_link'] != NULL){ ?>
               <img src="<?php echo $plugin['plugin_image_link']; ?>" alt="profile_image" class="w-100 border-radius-lg shadow-sm">
               <?php }else{ ?>
               <img src="https://www.nicepng.com/png/detail/39-395944_logo-wordpress-plugin-logo.png" alt="profile_image" class="w-100 border-radius-lg shadow-sm">
               <?php } ?>
-
             </div>
           </div>
           <div class="col-auto my-auto">
             <div class="h-100">
-              <h5 class="mb-1">
+              <h5 class="mb-1 d-flex align-items-center">
+                <span class="mr-2">
                 <?php echo $plugin['plugin_name']; ?>
+                </span>
+   
+                    <?php 
+                  switch ($plugin_status['plugin_status']) {
+                      case 0:
+                          $statusclass = "bg-secondary";
+                          break;
+                      case 1:
+                          $statusclass = "bg-success";
+                          break;
+                      case 2:
+                          $statusclass = "bg-danger";
+                          break;
+                  }
+                ?>
+                <span><span class="badge text-xxxs <?php echo $statusclass; ?> p-2 rounded ml-2"><?php echo $array_status[$plugin_status['plugin_status']]; ?></span><span class="badge text-xxxs text-white bg-dark m-1 rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="<?php echo $plugin_status['reviewed_notes']; ?>"><i class="fa fa-info"></i></span></span>
+    
               </h5>
+              
               <p class="mb-0 font-weight-normal text-sm">
                 <a href="<?php echo $plugin['plugin_link']; ?>" target="_blank"><?php echo $plugin['plugin_link']; ?></a>
               </p>
@@ -80,8 +98,11 @@
                 </div>
               </div>
             </div>
+
+
+
             <div class="col-12 col-xl-4">
-              <div class="card card-plain h-100">
+              <div class="card card-plain">
                 <div class="card-header pb-0 p-3">
                   <h6 class="mb-0">Conclusion</h6>
                 </div>
@@ -90,6 +111,7 @@
                     <?php echo $plugin['plugin_conclusion']; ?>
                   </p>
                 </div>
+       
               </div>
             </div>
             <div class="col-12">

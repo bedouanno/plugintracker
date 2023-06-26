@@ -39,13 +39,21 @@ class Main extends CI_Controller {
 
 	
         public function index(){
+                $data['object'] = $this->load->helper("datetime_helper");
                 $data = $this->user_info;
                 $this->session_users();
 
+// print_r($data['current_datetime']);
+//                 exit;
 
+                $data['activity_logs'] = $this->plugins_model->get_activity_logs();
+
+//                 print_r($data['activity_logs']);
+
+// exit;
                 $data['title'] = 'Dashboard';
                 $this->load->view('includes/head');
-                $this->load->view('includes/siderbar');
+                $this->load->view('includes/siderbar', $data);
                 $this->load->view('includes/header', $data);
                 $this->load->view('index', $data);
                 $this->load->view('includes/footer');

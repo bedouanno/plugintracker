@@ -101,7 +101,7 @@
 
   
     <li class="nav-item mt-3">
-      <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Account pages</h6>
+      <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Options</h6>
     </li>
   
 <!-- <li class="nav-item">
@@ -115,7 +115,7 @@
   </a>
 </li> -->
 
-
+<?php if($user_info['role'] == 1){ ?>
 <li class="nav-item">
   <a class="nav-link text-white" href="<?php echo base_url(); ?>users/list">
     
@@ -127,15 +127,15 @@
 
   </a>
 </li>
- 
+    <?php  } ?>
 <li class="nav-item">
-  <a class="nav-link text-white" href="<?php echo base_url(); ?>logout">
+  <a class="nav-link text-white bg-danger" href="<?php echo base_url(); ?>logout">
     
       <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
         <i class="material-icons opacity-10">assignment</i>
       </div>
     
-    <span class="nav-link-text ms-1">Sign Out</span>
+    <span class="nav-link-text ms-1 ">Sign Out</span>
 
   </a>
 </li>

@@ -8,9 +8,9 @@
                 <a href="<?php echo base_url(); ?>users/create" class="btn btn-success mr-3 d-block mr-5">Add User</a> 
               </div>
             </div>
-            <div class="card-body px-0 pb-2">
+            <div class="card-body px-3 pb-2">
               <div class="table-responsive p-0">
-                <table class="table align-items-center mb-0">
+                <table class="table align-items-center mb-0" id="userList">
                   <thead>
                     <tr>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Name</th>
@@ -28,7 +28,7 @@
                         <div class="d-flex px-2 py-1">
                           <div class="d-flex flex-column justify-content-center">
                             <h6 class="mb-0 text-sm"><?php echo $user['first_name']; ?></h6>
-                            <p class="text-xs text-secondary mb-0"><a href="<?php echo base_url(); ?>view/<?php echo $user['id'].' '.$user['last_name']; ?>" target="_blank"><?php echo $user['first_name'].' '.$user['last_name']; ?></a></p>
+                            <p class="text-xs text-secondary mb-0"><a href="<?php echo base_url(); ?>users/view/<?php echo $user['id']; ?>" target="_blank"><?php echo $user['first_name'].' '.$user['last_name']; ?></a></p>
                           </div>
                         </div>
                       </td>
