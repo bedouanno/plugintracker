@@ -4,9 +4,12 @@
 
     $('#approvedPlugin, #forApproval, #notSafeplugin, #statusApproval, #userList, #publicViewTable').DataTable({
       "pageLength": 50,
-      order: [[ 0, 'asc' ]]
+      order: [ 0, 'asc' ]
 
     });
+
+
+    
 
 
 

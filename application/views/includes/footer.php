@@ -145,7 +145,20 @@ $('#password, #confirm_password').on('keyup', function () {
 <!-- Main JS-->
 <script src="<?php echo base_url(); ?>assetsv2/js/plugins.js"></script>
 
+<!-- DELETE BUTTOM -->
+<script>
+    function deleteBtn(element) {
+ 
 
+    $.sweetModal.confirm('Confirm please?', function() {
+	$.sweetModal('<?php echo base_url(); ?>/plugins/delete_plugin/'+element);
+    window.location.href = '<?php echo base_url(); ?>/plugins/delete_plugin/'+element;
+
+    });
+
+    }
+
+  </script>
 
 
   </body>

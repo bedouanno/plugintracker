@@ -15,10 +15,10 @@
                     <tr>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Plugin Name</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Added By (Committee)</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Version</th>
+                      <!-- <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Version</th> -->
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tested Up to <span class="d-block">(WordPress Version)</span></th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Compatible <span class="d-block">WordPress Version</span></th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Last Updated</th>
+                      <!-- <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Last Updated</th> -->
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Requested By</th>
                       <th class="text-secondary opacity-7 text-center">Status</th>
                     </tr>
@@ -28,9 +28,20 @@
                     <tr>
                       <td>
                         <div class="d-flex px-2 py-1">
-                          <div class="d-flex flex-column justify-content-center">
+                          <div class="d-flex justify-content-center">
+                            <div>
+                          <?php  if($plugin['plugin_image_link'] != NULL){ ?>
+                        <img src="<?php echo $plugin['plugin_image_link']; ?>" alt="profile_image" class="avatar avatar-sm me-3">
+                        <?php }else{ ?>
+                        <img src="https://www.nicepng.com/png/detail/39-395944_logo-wordpress-plugin-logo.png" class="avatar avatar-sm me-3" alt="profile_image">
+                        <?php } ?>
+                          </div>
+
+                            <div>
                             <h6 class="mb-0 text-sm"><?php echo $plugin['plugin_name']; ?></h6>
                             <p class="text-xs text-secondary mb-0"><a href="<?php echo $plugin['plugin_link']; ?>" target="_blank"><?php echo $plugin['plugin_link']; ?></a></p>
+                            </div>
+
                           </div>
                         </div>
                       </td>
@@ -40,19 +51,19 @@
                         </p>
     
                       </td>
-                      <td class="align-middle text-left text-sm">
-                        <!-- <span class="badge badge-sm bg-gradient-success"><?php //echo $plugin['plugin_version']; ?></span> -->
-                          <p class="text-xs font-weight-bold mb-0"><?php echo $plugin['plugin_version']; ?></p>
-                      </td>
+                      <!-- <td class="align-middle text-left text-sm">
+                         <span class="badge badge-sm bg-gradient-success"><-?php //echo $plugin['plugin_version']; ?></span> -->
+                          <!-- <p class="text-xs font-weight-bold mb-0"><-?php echo $plugin['plugin_version']; ?></p> 
+                      </td> -->
                       <td class="align-middle text-center">
                           <p class="text-xs font-weight-bold mb-0"><?php echo $plugin['plugin_testup_wp']; ?></p>
                       </td>
                       <td class="align-middle text-center">
                           <p class="text-xs font-weight-bold mb-0"><?php echo $plugin['plugin_compatible_wp']; ?></p>
                       </td>
-                      <td class="align-middle text-center">
+                      <!-- <td class="align-middle text-center">
                           <p class="text-xs font-weight-bold mb-0"><?php echo $plugin['plugin_last_updated']; ?></p>
-                      </td>
+                      </td> -->
                       <td class="align-middle text-center">
                       <!-- <?php //echo $rby ?> -->
                           <p class="text-xs font-weight-bold mb-0"><?php echo $request_by[$plugin['plugin_requested_by']]; ?></p>

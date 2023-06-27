@@ -35,7 +35,7 @@
                           break;
                   }
                 ?>
-                <span><span class="badge text-xxxs <?php echo $statusclass; ?> p-2 rounded ml-2"><?php echo $array_status[$plugin_status['plugin_status']]; ?></span><span class="badge text-xxxs text-white bg-dark m-1 rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="<?php echo $plugin_status['reviewed_notes']; ?>"><i class="fa fa-info"></i></span></span>
+                <a href="javascript:;" onclick="popup_sn('#approval_form')"><span class="badge text-xxxs <?php echo $statusclass; ?> p-2 rounded ml-2"><?php echo $array_status[$plugin_status['plugin_status']]; ?></span><span class="badge text-xxxs text-white bg-dark m-1 rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="<?php echo $plugin_status['reviewed_notes']; ?>"><i class="fa fa-info"></i></span></a>
     
               </h5>
               
@@ -44,11 +44,13 @@
               </p>
             </div>
           </div>
-          <div class="col-lg-4 col-md-6 my-sm-auto ms-sm-auto me-sm-0 mx-auto mt-3">
-            <div class="nav-wrapper position-relative end-0">
-              <ul class="nav nav-pills nav-fill p-1" role="tablist">
+
+          <div class="col-lg-3 col-md-6 my-sm-auto ms-sm-auto me-sm-0 mx-auto mt-3">
+
+            <div class="end-0">
+              <ul class="nav nav-pills nav-fill p-1">
                 <li class="nav-item">
-                  <a class="nav-link mb-0 px-0 py-1 bg-success text-white" href="<?php echo base_url(); ?>plugins/view/<?php echo $plugin['id']; ?>" role="tab" aria-selected="true">
+                  <a class="nav-link mb-0 px-0 py-1 bg-success text-white" href="<?php echo base_url(); ?>plugins/view/<?php echo $plugin['id']; ?>">
                     <i class="material-icons text-lg position-relative">info</i>
                     <span class="ms-1">Plugin Information</span>
                   </a>
@@ -60,9 +62,13 @@
                   </a>
                 </li>
               </ul>
+
             </div>
+
           </div>
+
         </div>
+
         <div class="row">
           <div class="row">
             <div class="col-12 col-xl-4">
@@ -127,169 +133,46 @@
                   </ul>
               </div>
             </div>
-            <hr class="horizontal dark mt-0 mb-2">
-            <div class="col-12 mt-4">
-              <div class="mb-5 ps-3">
-                <h6 class="mb-1">Related Plugins <span class="text-danger text-xxs font-italic">(Coming Soon...)</span></h6>
-                <!-- <p class="text-sm">Architects design houses</p> -->
-              </div>
-              <div class="row">
-                <div class="col-xl-3 col-md-6 mb-xl-0 mb-4">
-                  <div class="card card-blog card-plain">
-                    <div class="card-header p-0 mt-n4 mx-3">
-                      <a class="d-block shadow-xl border-radius-xl">
-                        <img src="<?php echo base_url(); ?>assetsv2/img/home-decor-1.jpg" alt="img-blur-shadow" class="img-fluid shadow border-radius-xl">
-                      </a>
-                    </div>
-                    <div class="card-body p-3">
-                      <!-- <p class="mb-0 text-sm">Accessibility</p> -->
-                      <a href="javascript:;">
-                        <h5>
-                          Plugin Name
-                        </h5>
-                      </a>
-                      <p class="mb-4 text-sm">
-                        <span class="badge badge-sm bg-secondary">Tags</span>
-                        <span class="badge badge-sm bg-secondary">Tags</span>
-                      </p>
-                      <div class="d-flex align-items-center justify-content-between">
-                        <button type="button" class="btn btn-outline-primary btn-sm mb-0">View Plugin</button>
-                        <div class="avatar-group mt-2">
-                          <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Peterson">
-                            <img alt="Image placeholder" src="<?php echo base_url(); ?>assetsv2/img/team-4.jpg">
-                          </a>
-                          <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Nick Daniel">
-                            <img alt="Image placeholder" src="<?php echo base_url(); ?>assetsv2/img/team-3.jpg">
-                          </a>
-                          <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ryan Milly">
-                            <img alt="Image placeholder" src="<?php echo base_url(); ?>assetsv2/img/team-2.jpg">
-                          </a>
-                          <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Elena Morison">
-                            <img alt="Image placeholder" src="<?php echo base_url(); ?>assetsv2img/team-1.jpg">
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-xl-3 col-md-6 mb-xl-0 mb-4">
-                  <div class="card card-blog card-plain">
-                    <div class="card-header p-0 mt-n4 mx-3">
-                      <a class="d-block shadow-xl border-radius-xl">
-                        <img src="<?php echo base_url(); ?>assetsv2/img/home-decor-2.jpg" alt="img-blur-shadow" class="img-fluid shadow border-radius-lg">
-                      </a>
-                    </div>
-                    <div class="card-body p-3">
-                      <!-- <p class="mb-0 text-sm">Accessibility</p> -->
-                      <a href="javascript:;">
-                        <h5>
-                          Plugin Name
-                        </h5>
-                      </a>
-                      <p class="mb-4 text-sm">
-                        <span class="badge badge-sm bg-secondary">Tags</span>
-                        <span class="badge badge-sm bg-secondary">Tags</span>
-                      </p>
-                      <div class="d-flex align-items-center justify-content-between">
-                        <button type="button" class="btn btn-outline-primary btn-sm mb-0">View Plugin</button>
-                        <div class="avatar-group mt-2">
-                          <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Peterson">
-                            <img alt="Image placeholder" src="<?php echo base_url(); ?>assetsv2/img/team-4.jpg">
-                          </a>
-                          <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Nick Daniel">
-                            <img alt="Image placeholder" src="<?php echo base_url(); ?>assetsv2/img/team-3.jpg">
-                          </a>
-                          <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ryan Milly">
-                            <img alt="Image placeholder" src="<?php echo base_url(); ?>assetsv2/img/team-2.jpg">
-                          </a>
-                          <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Elena Morison">
-                            <img alt="Image placeholder" src="<?php echo base_url(); ?>assetsv2img/team-1.jpg">
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-xl-3 col-md-6 mb-xl-0 mb-4">
-                  <div class="card card-blog card-plain">
-                    <div class="card-header p-0 mt-n4 mx-3">
-                      <a class="d-block shadow-xl border-radius-xl">
-                        <img src="<?php echo base_url(); ?>assetsv2/img/home-decor-3.jpg" alt="img-blur-shadow" class="img-fluid shadow border-radius-xl">
-                      </a>
-                    </div>
-                    <div class="card-body p-3">
-                      <!-- <p class="mb-0 text-sm">Accessibility</p> -->
-                      <a href="javascript:;">
-                        <h5>
-                          Plugin Name
-                        </h5>
-                      </a>
-                      <p class="mb-4 text-sm">
-                        <span class="badge badge-sm bg-secondary">Tags</span>
-                        <span class="badge badge-sm bg-secondary">Tags</span>
-                      </p>
-                      <div class="d-flex align-items-center justify-content-between">
-                        <button type="button" class="btn btn-outline-primary btn-sm mb-0">View Plugin</button>
-                        <div class="avatar-group mt-2">
-                          <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Peterson">
-                            <img alt="Image placeholder" src="<?php echo base_url(); ?>assetsv2/img/team-4.jpg">
-                          </a>
-                          <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Nick Daniel">
-                            <img alt="Image placeholder" src="<?php echo base_url(); ?>assetsv2/img/team-3.jpg">
-                          </a>
-                          <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ryan Milly">
-                            <img alt="Image placeholder" src="<?php echo base_url(); ?>assetsv2/img/team-2.jpg">
-                          </a>
-                          <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Elena Morison">
-                            <img alt="Image placeholder" src="<?php echo base_url(); ?>assetsv2img/team-1.jpg">
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-xl-3 col-md-6 mb-xl-0 mb-4">
-                  <div class="card card-blog card-plain">
-                    <div class="card-header p-0 mt-n4 mx-3">
-                      <a class="d-block shadow-xl border-radius-xl">
-                        <img src="https://images.unsplash.com/photo-1606744824163-985d376605aa?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="img-blur-shadow" class="img-fluid shadow border-radius-xl">
-                      </a>
-                    </div>
-                    <div class="card-body p-3">
-                      <!-- <p class="mb-0 text-sm">Accessibility</p> -->
-                      <a href="javascript:;">
-                        <h5>
-                          Plugin Name
-                        </h5>
-                      </a>
-                      <p class="mb-4 text-sm">
-                        <span class="badge badge-sm bg-secondary">Tags</span>
-                        <span class="badge badge-sm bg-secondary">Tags</span>
-                        <span class="badge badge-sm bg-secondary">Tags</span>
-                      </p> 
-                      <div class="d-flex align-items-center justify-content-between">
-                        <button type="button" class="btn btn-outline-primary btn-sm mb-0">View Plugin</button>
-                        <div class="avatar-group mt-2">
-                          <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Peterson">
-                            <img alt="Image placeholder" src="<?php echo base_url(); ?>assetsv2/img/team-4.jpg">
-                          </a>
-                          <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Nick Daniel">
-                            <img alt="Image placeholder" src="<?php echo base_url(); ?>assetsv2/img/team-3.jpg">
-                          </a>
-                          <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ryan Milly">
-                            <img alt="Image placeholder" src="<?php echo base_url(); ?>assetsv2/img/team-2.jpg">
-                          </a>
-                          <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Elena Morison">
-                            <img alt="Image placeholder" src="<?php echo base_url(); ?>assetsv2img/team-1.jpg">
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <!-- <hr class="horizontal dark mt-0 mb-2"> -->
           </div>
         </div>
       </div>
     </div>
+
+
+
+          <div class="modal-custom d-none" id="approval_form">
+      <div class="row">
+        <div class="col">
+          <div class="card card-custom blue-grey darken-1 p-4 col-5">
+            <?php echo form_open('plugins/for-review-view/'.$plugin['id']); ?>
+            <div class="card-content white-text">
+              <span class="card-title h6 pb-3">Update Status</span>
+              <hr class="my-2">
+                  <div class="col-sm-12">
+                      <div class="input-group input-group-static mb-3">
+                        <label>Additional Notes</label>
+                        <textarea name="reviewed_notes" id="reviewed_notes" required></textarea>
+                      </div>
+                  </div>
+                   <div class="input-group input-group-static mb-3">
+                          <select class="form-control" id="plugin_status" name="plugin_status" required>
+                            <option value="">For Review</option>
+                            <option value="1">Approved</option>
+                            <option value="2">Not Safe</option>
+   
+                          </select>
+                      </div>
+                        
+                  
+            </div>
+            <div class="card-action mt-2">
+            <input type="submit" name="save_btn" value="Save" class="btn btn-sm btn-success" data-bs-toggle="tooltip" data-bs-placement="top" title="Save">
+              <a href="#" class="btn btn-sm btn-danger close-btn" data-bs-toggle="tooltip" data-bs-placement="top" title="Close"><i class="large material-icons">close</i></a>
+              <?php echo form_close(); ?>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>

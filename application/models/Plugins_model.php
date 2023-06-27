@@ -29,6 +29,12 @@ class Plugins_model extends CI_Model {
 
     }
 
+    public function get_plugin_v2($id = FALSE){
+        $query = $this->db->get('tbl_plugins');
+        $this->db->where('tbl_plugins.id', $id); 
+        return $query->result_array();
+    }
+
     public function update_plugin_info($id = NULL, $data = NULL) {
         $ps = $data;
         $this->db->set($ps);
@@ -100,6 +106,13 @@ class Plugins_model extends CI_Model {
         $query = $this->db->get();
 
         return $query->result_array();
+    }
+
+
+    // Deleted move to JSON
+
+    public function deleted_plugin($data_post){
+        return $this->db->insert('tbl_deleted_plugins',$data_post);
     }
 
     

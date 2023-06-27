@@ -81,6 +81,11 @@
                       </li>
                   </ul>
                   <input type="submit" value="Update" name="update_btn" class="btn btn-sm btn-success col-lg-4 col-md-6 my-sm-auto ms-sm-auto me-sm-0 mx-auto mt-3 end-0">
+                  <a class="btn btn-sm btn-danger col-lg-4 col-md-6 my-sm-auto ms-sm-auto me-sm-0 mx-auto mt-3 end-0 w-auto float-right" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Move to trash" onclick="deleteBtn('<?php echo $plugin['id']; ?>')">
+                    <i class="material-icons text-lg position-relative">delete</i>
+                  </a>
+
+
                    <?php echo form_close(); ?>
                 </div>
               </div>

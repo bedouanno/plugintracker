@@ -32,11 +32,15 @@
             </div>
           </div>
           <div class="col-lg-2 col-md-6 my-sm-auto ms-sm-auto me-sm-0 mx-auto mt-3">
-            <div class="nav-wrapper position-relative end-0">
+            <div class="nav-wrapper position-relative d-block">
             <?php if($status['plugin_status'] == 0){ ?>
-                  <a class="btn btn-sm w-100 mb-0 px-0 py-1 bg-danger text-white" href="javascript:;" onClick="popup_sn('#approval_form')">
+
+                  <a class="btn btn-sm w-70 mb-0 px-0 py-1 bg-danger text-white d-inline-block" href="javascript:;" onClick="popup_sn('#approval_form')" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Click here for action review.">
                     <i class="material-icons text-lg position-relative">visibility</i>
                     <span class="ms-1">Review</span>
+                  </a>
+                  <a class="btn mb-0 px-2 py-1 bg-warning text-white d-inline-block text-center" href="javascript:;" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Move to trash" onclick="deleteBtn('<?php echo $plugin['id']; ?>')">
+                    <i class="material-icons text-lg position-relative">delete</i>
                   </a>
             <?php }else{ ?>
                   <a class="btn btn-sm w-100 mb-0 px-0 py-1 bg-success text-white" href="javascript:;">
@@ -391,14 +395,14 @@
                   <div class="col-sm-12">
                       <div class="input-group input-group-static mb-3">
                         <label>Additional Notes</label>
-                        <textarea name="reviewed_notes" id="reviewed_notes"></textarea>
+                        <textarea name="reviewed_notes" id="reviewed_notes" required></textarea>
                       </div>
                   </div>
                    <div class="input-group input-group-static mb-3">
                           <select class="form-control" id="plugin_status" name="plugin_status" required>
-                            <option value="0">For Review</option>
+                            <option value="">For Review</option>
                             <option value="1">Approved</option>
-                            <option value="2">Not Sate</option>
+                            <option value="2">Not Safe</option>
    
                           </select>
                       </div>

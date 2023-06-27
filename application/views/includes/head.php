@@ -51,6 +51,11 @@
 
 
     .text-xxxs{font-size: 8px; margin-left: 12px}
+
+#statusApproval td:nth-child(2){white-space: normal !important; width: 200px;}
+
+#statusApproval td:nth-child(1){white-space: normal;}
+#dashBoardTable td:nth-child(1){white-space: normal;}
     </style>
 
 

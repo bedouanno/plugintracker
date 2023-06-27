@@ -466,6 +466,43 @@ class Plugins extends CI_Controller {
                 $this->load->view('includes/footer');
 
         }
+        
+        public function delete_plugin($id =  NULL){
+                $data = $this->user_info;
+                $this->session_users();
+                $user_id = $data['user_info']['id'];
+
+                $data['title'] = 'Delete';
+
+                // >>>>>>>>>>>>>>>> Activity LOGS >>>>>>>>>>>>>>>>>> //
+                $post_data3 = array(
+                        'plugin_id_log' => $id,
+                        'user_id_log' => $user_id,
+                        'activity_desc' => 'Deleted Plugin.',
+                        'activity_datetime' => $data['current_datetime']
+                );
+                $this->plugins_model->create_activity_log($post_data3);
+                // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> //
+
+                $deleted_datas = $this->plugins_model->get_plugin_v2($id);
+
+                $post_deleted = array(
+                        'deleted_id_plugin' => $id,
+                        'deleted_datas' => json_encode($deleted_datas)
+                );
+
+                $this->plugins_model->deleted_plugin($post_deleted);
+
+                // exit;
+
+                $this->session->set_flashdata('msg', 'Deleted Success');
+                $this->db->delete('tbl_plugins', array('id' => $id)); 
+                $this->db->delete('tbl_activity_log', array('plugin_id_log' => $id)); 
+                $this->db->delete('tbl_plugin_status', array('plugin_id' => $id)); 
+
+                redirect('dashboard');
+
+        }
 
 
 
