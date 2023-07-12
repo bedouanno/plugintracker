@@ -118,6 +118,8 @@ class Plugins extends CI_Controller {
                 $this->session_users();
                 $data['title'] = 'View Plugin';
                 $data['object'] = $this->load->helper("datetime_helper");
+                $user_id = $data['user_info']['id'];
+
 
                 $data['plugin'] = $this->plugins_model->get_plugin($id);
 
@@ -126,16 +128,60 @@ class Plugins extends CI_Controller {
   
                 $data['plugin_status'] = $this->plugins_model->get_review_plugin($id);
 
-        //                 print_r($data['plugin_status']);
 
-        // exit;
+                if($this->input->post('save_btn')):
+                        $this->form_validation->set_rules('reviewed_notes','Reviewed Notes');
+                        $this->form_validation->set_rules('plugin_status','Plugin Status','required');
+                endif;
+
+                if($this->form_validation->run() === FALSE){
+                
+                        $this->load->view('includes/head');
+                        $this->load->view('includes/siderbar', $data);
+                        $this->load->view('includes/header', $data);
+                        $this->load->view('plugins/view', $data);
+                        $this->load->view('includes/footer');
+                }else{
+                        if($this->input->post('save_btn')):
+
+                        $post_data2 = array(
+                                'reviewed_notes' => $this->input->post('reviewed_notes'),
+                                'plugin_status' => $this->input->post('plugin_status'),
+                                'reviewed_date' => $data['current_datetime'],
+                                'reviewed_by' => $user_id
+                        );
+                        // <option value="1">Approved</option>
+                        // <option value="2">Not Sate</option>
+
+                        if($this->input->post('plugin_status') == 1):
+                                $activity_desc = 'Approved';
+                        endif;
+
+                        if($this->input->post('plugin_status') == 2):
+                                $activity_desc = 'Not Safe';
+                        endif;
 
 
-                $this->load->view('includes/head');
-                $this->load->view('includes/siderbar', $data);
-                $this->load->view('includes/header', $data);
-                $this->load->view('plugins/view', $data);
-                $this->load->view('includes/footer');
+                        // >>>>>>>>>>>>>>>> Activity LOGS >>>>>>>>>>>>>>>>>> //
+                        $post_data3 = array(
+                                'plugin_id_log' => $id,
+                                'user_id_log' => $user_id,
+                                'activity_desc' => 'Moved plugin to '.$activity_desc.'.',
+                                'activity_datetime' => $data['current_datetime']
+                        );
+                        $this->plugins_model->create_activity_log($post_data3);
+                        // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> //
+
+                        $this->plugins_model->update_reviewed_plugin($id, $post_data2);
+
+                        endif;
+
+                        $this->session->set_flashdata('msg', 'Updated Successfully!');
+                        redirect('plugins/view/'.$id);
+                }
+
+
+
         }
 
         public function update($id = NULL){
@@ -316,7 +362,7 @@ class Plugins extends CI_Controller {
                 endif;
 
                 if($this->input->post('save_btn')):
-                        $this->form_validation->set_rules('reviewed_notes','Reviewed Notes','required');
+                        $this->form_validation->set_rules('reviewed_notes','Reviewed Notes');
                         $this->form_validation->set_rules('plugin_status','Plugin Status','required');
                 endif;
 

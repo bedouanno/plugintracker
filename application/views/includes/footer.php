@@ -128,7 +128,28 @@ $('#password, #confirm_password').on('keyup', function () {
     CKEDITOR.replace( 'security_notes' );
     CKEDITOR.replace( 'conclusion' );
     CKEDITOR.replace( 'reviewed_notes' );
+
+
 </script>
+
+
+
+
+
+    <script>
+        var allEditors = document.querySelector('#reviewed_notes');
+        ClassicEditor.create(allEditors);
+        $("#ckeditorForm").submit(function(e) {
+            var content = $('.ck_editor_txt').val();
+            html = $(content).text();
+            if ($.trim(html) == '') {
+                alert("Please enter message");
+                e.preventDefault();
+            } else {
+                alert("Success");
+            }
+        });
+    </script>
 
 <script>
     $(function () {
@@ -138,9 +159,14 @@ $('#password, #confirm_password').on('keyup', function () {
 
 })
 </script>
+<!-- <script src="https://cdn.datatables.net/v/dt/dt-1.13.4/datatables.min.js"></script>
 
 
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script> -->
+
+<script src="https://cdn.datatables.net/v/dt/jszip-2.5.0/dt-1.13.4/b-2.3.6/b-html5-2.3.6/datatables.min.js"></script>
+
 
 <!-- Main JS-->
 <script src="<?php echo base_url(); ?>assetsv2/js/plugins.js"></script>

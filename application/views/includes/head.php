@@ -32,8 +32,11 @@
   <!-- Material Icons -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
   <!-- CSS Files -->
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.2/css/jquery.dataTables.css">
+    <!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.2/css/jquery.dataTables.css"> -->
+<!-- <link href="https://cdn.datatables.net/v/dt/dt-1.13.4/datatables.min.css" rel="stylesheet"/> -->
 
+<link href="https://cdn.datatables.net/v/dt/jszip-2.5.0/dt-1.13.4/b-2.3.6/b-html5-2.3.6/datatables.min.css" rel="stylesheet"/>
+ 
 
   <link id="pagestyle" href="<?php echo base_url(); ?>assetsv2/css/material-dashboard.css?v=3.1.0" rel="stylesheet" />
   <link rel="stylesheet" href="<?php echo base_url(); ?>assetsv2/sweet-modal/jquery.sweet-modal.min.css"/>
@@ -56,6 +59,16 @@
 
 #statusApproval td:nth-child(1){white-space: normal;}
 #dashBoardTable td:nth-child(1){white-space: normal;}
+
+
+#publicViewTable td:nth-child(1){white-space: normal;}
+#publicViewTable td:nth-child(2){white-space: normal;}
+#publicViewTable td:nth-child(5){white-space: normal;}
+#publicViewTable td:nth-child(6){white-space: normal;}
+/* #publicViewTable td:nth-child(1){white-space: normal;} */
+
+
+/* #dashBoardTable_wrapper div.dt-buttons .dt-button{background: red !important} */
     </style>
 
 

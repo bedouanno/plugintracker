@@ -35,7 +35,7 @@
                           break;
                   }
                 ?>
-                <a href="javascript:;" onclick="popup_sn('#approval_form')"><span class="badge text-xxxs <?php echo $statusclass; ?> p-2 rounded ml-2"><?php echo $array_status[$plugin_status['plugin_status']]; ?></span><span class="badge text-xxxs text-white bg-dark m-1 rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="<?php echo $plugin_status['reviewed_notes']; ?>"><i class="fa fa-info"></i></span></a>
+                <span><a href="javascript:;" onclick="popup_sn('#approval_form')"><span class="badge text-xxxs <?php echo $statusclass; ?> p-2 rounded ml-2"><?php echo $array_status[$plugin_status['plugin_status']]; ?></span></a><span class="badge text-xxxs text-white bg-dark m-1 rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="<?php echo $plugin_status['reviewed_notes']; ?>"><i class="fa fa-info"></i></span><span>
     
               </h5>
               
@@ -145,22 +145,21 @@
       <div class="row">
         <div class="col">
           <div class="card card-custom blue-grey darken-1 p-4 col-5">
-            <?php echo form_open('plugins/for-review-view/'.$plugin['id']); ?>
+            <?php echo form_open('plugins/view/'.$plugin['id']); ?>
             <div class="card-content white-text">
               <span class="card-title h6 pb-3">Update Status</span>
               <hr class="my-2">
                   <div class="col-sm-12">
                       <div class="input-group input-group-static mb-3">
                         <label>Additional Notes</label>
-                        <textarea name="reviewed_notes" id="reviewed_notes" required></textarea>
+                        <textarea name="reviewed_notes" id="reviewed_notes"></textarea>
                       </div>
                   </div>
                    <div class="input-group input-group-static mb-3">
                           <select class="form-control" id="plugin_status" name="plugin_status" required>
-                            <option value="">For Review</option>
-                            <option value="1">Approved</option>
-                            <option value="2">Not Safe</option>
-   
+                            <option value="0" <?php if($plugin_status['plugin_status'] == 0) { echo 'selected';} ?>>For Review</option>
+                            <option value="1" <?php if($plugin_status['plugin_status'] == 1) { echo 'selected';} ?>>Approved</option>
+                            <option value="2" <?php if($plugin_status['plugin_status'] == 2) { echo 'selected';} ?>>Not Safe</option>
                           </select>
                       </div>
                         

@@ -81,16 +81,13 @@
                         <?php } ?>
                           </div>
                           <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm"><?php echo $log['plugin_name']; ?></h6>
+                            <h6 class="mb-0 text-sm"><a href="<?php echo base_url(); ?>plugins/view/<?php echo $log['plugin_id_log']; ?>"><?php echo $log['plugin_name']; ?></a></h6>
                           </div>
                         </div>
                       </td>
                       <td>
                         <div class="avatar-group mt-2">
-                          <!-- <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ryan Tompson">
-                            <img src="<?php echo base_url(); ?>assetsv2/img/team-1.jpg" alt="team1">
-                          </a> -->
-                          
+                                    
 
                           <?php echo $this->users_model->get_user($log['user_id_log'])['first_name']; ?>
                         </div>

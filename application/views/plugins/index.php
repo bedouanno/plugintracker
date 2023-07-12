@@ -42,7 +42,7 @@
 
                             <div>
                             <h6 class="mb-0 text-sm"><?php echo $plugin['plugin_name']; ?></h6>
-                            <p class="text-xs text-secondary mb-0"><a href="<?php echo $plugin['plugin_link']; ?>" target="_blank"><?php echo $plugin['plugin_link']; ?></a></p>
+                           <a href="<?php echo $plugin['plugin_link']; ?>" class="text-xs text-secondary mb-0"  target="_blank"><img alt="<?php echo $plugin['plugin_link']; ?>"></a>
                             </div>
 
                           </div>

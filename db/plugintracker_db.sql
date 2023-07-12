@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 27, 2023 at 12:44 PM
+-- Generation Time: Jul 12, 2023 at 04:21 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
 
@@ -41,7 +41,21 @@ CREATE TABLE `tbl_activity_log` (
 
 INSERT INTO `tbl_activity_log` (`id`, `user_id_log`, `plugin_id_log`, `activity_desc`, `activity_datetime`) VALUES
 (49, 1, 11, 'Created plugin for review.', '2023-06-27 18:32:33'),
-(50, 1, 11, 'Deleted Plugin.', '2023-06-27 18:32:57');
+(50, 1, 11, 'Deleted Plugin.', '2023-06-27 18:32:57'),
+(62, 1, 15, 'Created plugin for review.', '2023-06-29 11:33:52'),
+(63, 1, 15, 'Reviewed plugin - Not Safe.', '2023-06-29 11:34:03'),
+(64, 1, 15, 'Reviewed plugin - Not Safe.', '2023-06-29 11:36:52'),
+(65, 1, 15, 'Reviewed plugin - Approved.', '2023-06-29 11:37:12'),
+(66, 1, 15, 'Reviewed plugin - Not Safe.', '2023-06-29 11:37:33'),
+(67, 1, 15, 'Reviewed plugin - Approved.', '2023-06-29 11:38:50'),
+(70, 1, 1, 'Reviewed plugin - Not Safe.', '2023-06-29 11:47:24'),
+(71, 1, 1, 'Moved plugin to Approved.', '2023-06-29 11:49:13'),
+(72, 1, 1, 'Moved plugin to Not Safe.', '2023-06-29 11:49:20'),
+(73, 1, 1, 'Moved plugin to Approved.', '2023-06-29 11:49:26'),
+(74, 1, 1, 'Moved plugin to Approved.', '2023-06-29 11:49:35'),
+(78, 1, 1, 'Moved plugin to Not Safe.', '2023-07-04 18:05:20'),
+(79, 1, 15, 'Updated plugin name and link.', '2023-07-05 17:22:54'),
+(80, 1, 15, 'Moved plugin to .', '2023-07-06 13:02:25');
 
 -- --------------------------------------------------------
 
@@ -67,6 +81,14 @@ CREATE TABLE `tbl_deleted_plugins` (
   `deleted_id_plugin` int(11) NOT NULL,
   `deleted_datas` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL CHECK (json_valid(`deleted_datas`))
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tbl_deleted_plugins`
+--
+
+INSERT INTO `tbl_deleted_plugins` (`id`, `deleted_id_plugin`, `deleted_datas`) VALUES
+(16, 16, '[{\"id\":\"1\",\"plugin_name\":\"Accessibility by UserWay\",\"plugin_link\":\"https:\\/\\/wordpress.org\\/plugins\\/userway-accessibility-widget\\/\",\"plugin_image_link\":\"https:\\/\\/ps.w.org\\/userway-accessibility-widget\\/assets\\/icon.svg?rev=2526447\",\"plugin_author\":\"UserWay.org\",\"plugin_version\":\"2.5.0\",\"plugin_testup_wp\":\"6.1.2\",\"plugin_compatible_wp\":\"4.7 or higher \",\"plugin_last_updated\":\"3 months ago\",\"plugin_security_notes\":\"In order to prevent unauthorized access or disclosure UserWay has put in place suitable physical, electronic and managerial procedures to safeguard and secure the information collected online. UserWay uses industry standard SSL (secure socket layer) encryption to transfer private personal information.\",\"plugin_conclusion\":\"- safe to use\",\"plugin_requested_by\":\"1\",\"plugin_added_by\":\"1\",\"plugin_date_added\":\"2023-05-19 07:21:52\",\"plugin_updated_by\":\"1\",\"plugin_date_update\":\"2023-06-26 13:32:46\"},{\"id\":\"14\",\"plugin_name\":\"test testicle\",\"plugin_link\":\"test\",\"plugin_image_link\":\"\",\"plugin_author\":\"test\",\"plugin_version\":\"12\",\"plugin_testup_wp\":\"1212\",\"plugin_compatible_wp\":\"121\",\"plugin_last_updated\":\"12\",\"plugin_security_notes\":\"test\",\"plugin_conclusion\":\"test\",\"plugin_requested_by\":\"1\",\"plugin_added_by\":\"1\",\"plugin_date_added\":\"2023-06-27 18:59:33\",\"plugin_updated_by\":\"1\",\"plugin_date_update\":\"2023-06-27 19:00:02\"},{\"id\":\"15\",\"plugin_name\":\"test\",\"plugin_link\":\"test23\",\"plugin_image_link\":\"\",\"plugin_author\":\"test\",\"plugin_version\":\"34\",\"plugin_testup_wp\":\"34\",\"plugin_compatible_wp\":\"34\",\"plugin_last_updated\":\"34\",\"plugin_security_notes\":\"test\",\"plugin_conclusion\":\"test\",\"plugin_requested_by\":\"2\",\"plugin_added_by\":\"1\",\"plugin_date_added\":\"2023-06-29 11:33:52\",\"plugin_updated_by\":null,\"plugin_date_update\":\"2023-06-29 11:33:52\"},{\"id\":\"16\",\"plugin_name\":\"test testicle\",\"plugin_link\":\"test\",\"plugin_image_link\":\"\",\"plugin_author\":\"tes\",\"plugin_version\":\"23\",\"plugin_testup_wp\":\"23\",\"plugin_compatible_wp\":\"23\",\"plugin_last_updated\":\"23\",\"plugin_security_notes\":\"test\",\"plugin_conclusion\":\"test\",\"plugin_requested_by\":\"1\",\"plugin_added_by\":\"1\",\"plugin_date_added\":\"2023-06-29 13:32:28\",\"plugin_updated_by\":null,\"plugin_date_update\":\"2023-06-29 13:32:28\"}]'),
+(17, 14, '[{\"id\":\"1\",\"plugin_name\":\"Accessibility by UserWay\",\"plugin_link\":\"https:\\/\\/wordpress.org\\/plugins\\/userway-accessibility-widget\\/\",\"plugin_image_link\":\"https:\\/\\/ps.w.org\\/userway-accessibility-widget\\/assets\\/icon.svg?rev=2526447\",\"plugin_author\":\"UserWay.org\",\"plugin_version\":\"2.5.0\",\"plugin_testup_wp\":\"6.1.2\",\"plugin_compatible_wp\":\"4.7 or higher \",\"plugin_last_updated\":\"3 months ago\",\"plugin_security_notes\":\"In order to prevent unauthorized access or disclosure UserWay has put in place suitable physical, electronic and managerial procedures to safeguard and secure the information collected online. UserWay uses industry standard SSL (secure socket layer) encryption to transfer private personal information.\",\"plugin_conclusion\":\"- safe to use\",\"plugin_requested_by\":\"1\",\"plugin_added_by\":\"1\",\"plugin_date_added\":\"2023-05-19 07:21:52\",\"plugin_updated_by\":\"1\",\"plugin_date_update\":\"2023-06-26 13:32:46\"},{\"id\":\"14\",\"plugin_name\":\"test testicle\",\"plugin_link\":\"test\",\"plugin_image_link\":\"\",\"plugin_author\":\"test\",\"plugin_version\":\"12\",\"plugin_testup_wp\":\"1212\",\"plugin_compatible_wp\":\"121\",\"plugin_last_updated\":\"12\",\"plugin_security_notes\":\"test\",\"plugin_conclusion\":\"test\",\"plugin_requested_by\":\"1\",\"plugin_added_by\":\"1\",\"plugin_date_added\":\"2023-06-27 18:59:33\",\"plugin_updated_by\":\"1\",\"plugin_date_update\":\"2023-06-27 19:00:02\"},{\"id\":\"15\",\"plugin_name\":\"test\",\"plugin_link\":\"test23\",\"plugin_image_link\":\"\",\"plugin_author\":\"test\",\"plugin_version\":\"34\",\"plugin_testup_wp\":\"34\",\"plugin_compatible_wp\":\"34\",\"plugin_last_updated\":\"34\",\"plugin_security_notes\":\"test\",\"plugin_conclusion\":\"test\",\"plugin_requested_by\":\"2\",\"plugin_added_by\":\"1\",\"plugin_date_added\":\"2023-06-29 11:33:52\",\"plugin_updated_by\":null,\"plugin_date_update\":\"2023-06-29 11:33:52\"}]');
 
 -- --------------------------------------------------------
 
@@ -98,7 +120,8 @@ CREATE TABLE `tbl_plugins` (
 --
 
 INSERT INTO `tbl_plugins` (`id`, `plugin_name`, `plugin_link`, `plugin_image_link`, `plugin_author`, `plugin_version`, `plugin_testup_wp`, `plugin_compatible_wp`, `plugin_last_updated`, `plugin_security_notes`, `plugin_conclusion`, `plugin_requested_by`, `plugin_added_by`, `plugin_date_added`, `plugin_updated_by`, `plugin_date_update`) VALUES
-(1, 'Accessibility by UserWay', 'https://wordpress.org/plugins/userway-accessibility-widget/', 'https://ps.w.org/userway-accessibility-widget/assets/icon.svg?rev=2526447', 'UserWay.org', '2.5.0', '6.1.2', '4.7 or higher ', '3 months ago', 'In order to prevent unauthorized access or disclosure UserWay has put in place suitable physical, electronic and managerial procedures to safeguard and secure the information collected online. UserWay uses industry standard SSL (secure socket layer) encryption to transfer private personal information.', '- safe to use', 1, 1, '2023-05-19 07:21:52', 1, '2023-06-26 13:32:46');
+(1, 'Accessibility by UserWay', 'https://wordpress.org/plugins/userway-accessibility-widget/', 'https://ps.w.org/userway-accessibility-widget/assets/icon.svg?rev=2526447', 'UserWay.org', '2.5.0', '6.1.2', '4.7 or higher ', '3 months ago', 'In order to prevent unauthorized access or disclosure UserWay has put in place suitable physical, electronic and managerial procedures to safeguard and secure the information collected online. UserWay uses industry standard SSL (secure socket layer) encryption to transfer private personal information.', '- safe to use', 1, 1, '2023-05-19 07:21:52', 1, '2023-06-26 13:32:46'),
+(15, 'test', 'test23.com', '', 'test', '34', '34', '34', '34', 'test', 'test', 2, 1, '2023-06-29 11:33:52', 1, '2023-07-05 17:22:54');
 
 -- --------------------------------------------------------
 
@@ -121,11 +144,12 @@ CREATE TABLE `tbl_plugin_status` (
 --
 
 INSERT INTO `tbl_plugin_status` (`id`, `plugin_id`, `committee_id`, `reviewed_notes`, `reviewed_by`, `reviewed_date`, `plugin_status`) VALUES
-(1, 1, 1, 'In order to prevent unauthorized access or disclosure UserWay has put in place suitable physical, electronic and managerial procedures to safeguard and secure the information collected online. UserWay uses industry standard SSL (secure socket layer) encryption to transfer private personal information. ', 1, '2023-05-19', 1),
+(1, 1, 1, '', 1, '2023-07-04', 2),
 (2, 2, 1, 'test', 1, '2023-05-19', 2),
 (4, 4, 1, 'test', 1, '2023-06-26', 1),
 (5, 5, 1, 'ok', 1, '2023-06-26', 1),
-(6, 6, 2, 'TEST', 1, '2023-06-26', 2);
+(6, 6, 2, 'TEST', 1, '2023-06-26', 2),
+(15, 15, 1, '', 1, '2023-07-06', 0);
 
 -- --------------------------------------------------------
 
@@ -226,7 +250,7 @@ ALTER TABLE `tbl_users_position`
 -- AUTO_INCREMENT for table `tbl_activity_log`
 --
 ALTER TABLE `tbl_activity_log`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
 
 --
 -- AUTO_INCREMENT for table `tbl_assigned_committee`
@@ -238,19 +262,19 @@ ALTER TABLE `tbl_assigned_committee`
 -- AUTO_INCREMENT for table `tbl_deleted_plugins`
 --
 ALTER TABLE `tbl_deleted_plugins`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `tbl_plugins`
 --
 ALTER TABLE `tbl_plugins`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `tbl_plugin_status`
 --
 ALTER TABLE `tbl_plugin_status`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `tbl_users`
